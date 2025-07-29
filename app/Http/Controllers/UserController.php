@@ -4,35 +4,41 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function index()
+    public function auth()
     {
         return view('login');
     }
-    public function register(){
+    public function authentication(Request $request){
+        $validated = $request->validate([
+            'username' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if(Auth::attempt($validated)){
+            return redirect()->intended('/')->with('pesan','Login success');
+        }
+
+        return redirect()->back()->with('pesan','login failed');
+    }
+    public function regist(){
         return view('regist');
     }
-    public function store(Request $request)
-    {
-        // Validate the request data
+    public function register(Request $request){
         $request->validate([
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-            'level' => 'required|in:user,officer,admin', // Example levels
+            'name' => 'required|string',
+            'username' => 'required|string|unique:users,username',
+            'password' => 'required',
         ]);
-
-        // Create a new user
-        $user = User::create([
+        User::create([
             'name' => $request->name,
-            'username' => $request->email,
-            'password' => bcrypt($request->password),
+            'username' => $request->username,
             'level' => "Warga",
+            'password' => bcrypt($request->password)
         ]);
-
         return redirect()->route('login')->with('pesanregist','Registered successfully');
-
     }
 }

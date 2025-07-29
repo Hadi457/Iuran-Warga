@@ -7,7 +7,7 @@ Route::get('/', function () {
     return view('home');
 
 });
-route::get('/login', [UserController::class, 'index'])->name('login');
-route::post('login', [UserController::class, 'auth'])->name('login.auth');
-route::get("/login/register",[UserController::class, 'register'])->name('register');
-route::post('login/register', [UserController::class, 'store'])->name('register.store');
+Route::get('/login',[UserController::class, 'auth'])->name('login');
+Route::post('/login',[UserController::class, 'authentication'])->name('auth');
+Route::get('/login/register',[UserController::class, 'regist'])->name('member-regist');
+Route::post('/login/register',[UserController::class, 'register'])->name('member-register');
