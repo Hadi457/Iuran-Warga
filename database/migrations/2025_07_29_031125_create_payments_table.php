@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('iduser')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('iduser')->references('id')->on('users');
             $table->enum('period',['harian', 'bulanan', 'tahunan']);
             $table->integer('nominal');
             $table->string('petugas');

@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'level',
     ];
 
     /**
@@ -43,5 +44,18 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function officer()
+    {
+        return $this->hasMany(Officer::class, 'iduser');
+    }
+    public function payment()
+    {
+        return $this->hasMany(Payment::class, 'iduser');
+    }
+    public function duesMember()
+    {
+        return $this->hasMany(DuesMember::class, 'iduser');
     }
 }

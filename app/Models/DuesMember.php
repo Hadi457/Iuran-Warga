@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class DuesMember extends Model
 {
-    //
+    protected $guarded = [];
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'iduser');
+    }
+    public function duesCategory()
+    {
+        return $this->belongsTo(DuesCategory::class, 'idduescategory');
+    }
 }
