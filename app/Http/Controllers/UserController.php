@@ -11,10 +11,10 @@ class UserController extends Controller
     {
         return view('login');
     }
-    public function regist(){
-        return view('register');
+    public function register(){
+        return view('regist');
     }
-    public function register(Request $request)
+    public function store(Request $request)
     {
         // Validate the request data
         $request->validate([
@@ -29,7 +29,7 @@ class UserController extends Controller
             'name' => $request->name,
             'username' => $request->email,
             'password' => bcrypt($request->password),
-            'level' => $request->level,
+            'level' => "Warga",
         ]);
 
         return redirect()->route('login')->with('pesanregist','Registered successfully');

@@ -19,7 +19,7 @@
                 <input type="text" class="form-control mb-3" placeholder="Password">
                 <div class="container d-flex flex-column justify-content-center align-items-center gap-2">
                     <a href="" class="btn btn-primary" style="width: 350px">Login</a>
-                    <a href="" class="btn btn-secondary" style="width: 350px">Register</a>
+                    <a href="/login/register" class="btn btn-secondary" style="width: 350px">Register</a>
                 </div>
             </div>
         </div>
