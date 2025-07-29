@@ -15,13 +15,13 @@
                 <h2>Our Dues</h2>
             </div>
             <div class="card-body" style="height: 200px; width: 400px; justify-content: center; align-items: center; display: flex; flex-direction: column;">
-                <input type="text" name="name" class="form-control mb-3" placeholder="Your Name">
-                <input type="text" name="username" class="form-control mb-3" placeholder="Your Name">
-                <input type="text" name="password" class="form-control mb-3" placeholder="Password">
-                <option type="text" name="level" class="form-control mb-3" placeholder="Level"></option>
-                <div class="container d-flex flex-column justify-content-center align-items-center gap-2">
-                    <a href="" class="btn btn-secondary" style="width: 350px">Register</a>
-                </div>
+                <form action="/login/register" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="text" name="name" class="form-control mb-3" placeholder="Your Name">
+                    <input type="text" name="username" class="form-control mb-3" placeholder="Useranme">
+                    <input type="text" name="password" class="form-control mb-3" placeholder="Password">
+                    <button class="btn btn-secondary">Register</button>
+                </form>
             </div>
         </div>
     </div>
