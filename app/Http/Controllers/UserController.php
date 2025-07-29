@@ -12,7 +12,7 @@ class UserController extends Controller
         return view('login');
     }
     public function regist(){
-        return view('register');
+        return view('regist');
     }
     public function register(Request $request)
     {

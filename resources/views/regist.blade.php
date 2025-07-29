@@ -18,9 +18,8 @@
                 <input type="text" name="name" class="form-control mb-3" placeholder="Your Name">
                 <input type="text" name="username" class="form-control mb-3" placeholder="Your Name">
                 <input type="text" name="password" class="form-control mb-3" placeholder="Password">
-                <option type="text" name="level" class="form-control mb-3" placeholder="Level">
+                <option type="text" name="level" class="form-control mb-3" placeholder="Level"></option>
                 <div class="container d-flex flex-column justify-content-center align-items-center gap-2">
-                    <a href="" class="btn btn-primary" style="width: 350px">Login</a>
                     <a href="" class="btn btn-secondary" style="width: 350px">Register</a>
                 </div>
             </div>
