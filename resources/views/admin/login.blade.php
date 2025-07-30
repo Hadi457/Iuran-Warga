@@ -14,22 +14,17 @@
                 <h2>Welcome To Our Dues</h2>
             </div>
             <div class="mt-5" style="height: 200px; width: 400px; justify-content: center; align-items: center; display: flex; flex-direction: column;">
-                <form action="/login/register" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('auth.login') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="text" name="name" class="form-control mb-3" placeholder="Your Name">
-                    <input type="text" name="username" class="form-control mb-3" placeholder="Useranme">
-                    <input type="password" type="text" name="password" class="form-control mb-3" placeholder="Password">
-                    <button class="btn" style="width: 300px; background-color: #FED16A; color: #386641">Register</button>
+                    <input type="text" name="username" class="form-control mb-3" placeholder="Username">
+                    <input type="password" name="password" class="form-control mb-3" placeholder="Password">
+                    <button class="btn" style="width: 300px; background-color: #FED16A; color: #386641" type="submit">Login</button>
                 </form>
-                <div class="d-flex mt-3 gap-2 ">
-                    <a style="display: flex; font-size: 15px; color: #FED16A">Already Have Account? </a>
-                    <a href="/login" class="nav-link" style="font-size: 15px; color: #FED16A">Sign In Here</a>
-                </div>
             </div>
         </div>
     </div>
     <footer class="d-flex justify-content-center align-items-center p-3" style="color: #FED16A; background-color: #386641;">
-        <p>&copy; {{ date('Y') }} Iuran Warga. All rights reserved.</p>
+        <p>&copy; {{ date('Y') }} OurDues. All rights reserved.</p>
     </footer>
 </body>
 <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
