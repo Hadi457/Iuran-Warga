@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>@yield('title', 'Vertical Navbar')</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      margin: 0;
+    }
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background-color: #386641;
+    }
+    .sidebar a {
+      color: #FED16A
+    }
+    .sidebar a:hover {
+      background-color: #2c4a32;
+    }
+    h4, a {
+      color: #FED16A;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar d-flex flex-column p-3">
+    <h4 class="mb-4">OurDues</h4>
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a href="#" class="nav-link">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Data Iuran</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Laporan</a>
+      </li>
+      <li class="nav-item mt-auto">
+        <form action="{{ route('logout') }}" method="POST">
+          @csrf
+          <button type="submit" class="btn btn-danger w-100 mt-4">Logout</button>
+        </form>
+      </li>
+    </ul>
+  </div>
+    <div class="mt-4">
+        @yield('content')
+    </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

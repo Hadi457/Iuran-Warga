@@ -16,3 +16,7 @@ Route::middleware('warga')->group(function () {
     })->name('home');
     Route::post('/logout',[UserController::class, 'logout'])->name('logout');
 });
+
+Route::get('/dashboard', function () {
+        return view('Administrator.dashboard');
+    })->name('dashboard');
