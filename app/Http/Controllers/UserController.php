@@ -25,8 +25,17 @@ class UserController extends Controller
         ]);
 
 
-        if(Auth::attempt($validated)){
-            return redirect()->intended('/')->with('pesan','Login success');
+        if (Auth::attempt($validated)) {
+            $user = Auth::user();
+
+            if ($user->level == 'Admin') {
+                return redirect()->route('dashbord')->with('pesan', 'Login success as admin');
+            } else if ($user->level == 'Warga') {
+                return redirect()->route('home')->with('pesan', 'Login success as warga');
+            } else {
+                Auth::logout();
+                return redirect()->route('login')->with('pesan', 'Role tidak dikenali.');
+            }
         }
 
         return redirect()->back()->with('pesan','login failed');

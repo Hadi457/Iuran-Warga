@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
 </head>
 <body class="bg-light min-vh-100 d-flex flex-column">
+    @if (session('pesan'))
+    <div class="alert alert-danger">
+        {{ session('pesan') }}
+    </div>
+@endif
+
     <div class="container my-auto text-white p-5 rounded">
         <div class="card d-flex justify-content-center align-items-center mx-auto rounded-5 p-5" style="width: 500px; background-color: #386641">
             <div class="d-flex text-center" style="color: #FED16A; width: 200px;">

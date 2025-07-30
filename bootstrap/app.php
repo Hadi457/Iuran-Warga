@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\AuthAdmin;
 use App\Http\Middleware\AuthWarga;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Foundation\Application;
@@ -16,7 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->appendToGroup('warga',[AuthWarga::class]);
     })
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->appendToGroup('admin',[AuthWarga::class]);
+        $middleware->appendToGroup('admin',[AuthAdmin::class]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

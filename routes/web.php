@@ -14,5 +14,13 @@ Route::middleware('warga')->group(function () {
     Route::get('/', function () {
         return view('home');
     })->name('home');
-    Route::post('/logout',[UserController::class, 'logout'])->name('logout');
 });
+
+Route::post('/logout',[UserController::class, 'logout'])->name('logout');
+
+Route::middleware(['admin'])->group(function () {
+    Route::get('/dashbord', function () {
+        return view('Administrator.dashbord');
+    })->name('dashbord');
+});
+
