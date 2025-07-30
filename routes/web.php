@@ -20,7 +20,6 @@ Route::post('/logout',[UserController::class, 'logout'])->name('logout');
 
 Route::middleware(['admin'])->group(function () {
     Route::get('/dashbord', function () {
-        return view('Administrator.dashbord');
+        return view('Administrator.dashboard');
     })->name('dashbord');
 });
-
