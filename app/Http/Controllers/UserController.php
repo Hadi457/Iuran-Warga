@@ -40,7 +40,6 @@ class UserController extends Controller
             'username' => 'required|string|unique:users,username',
             'password' => 'required',
         ]);
-        // Create a new user
         User::create([
             'name' => $request->name,
             'username' => $request->username,

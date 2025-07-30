@@ -1,15 +1,14 @@
 <?php
 
 use App\Http\Controllers\UserController;
-use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/login',[UserController::class, 'auth'])->name('login');
 Route::post('/login',[UserController::class, 'authentication'])->name('auth.login');
 
-Route::get('/login/register',[UserController::class, 'regist'])->name('member-regist');
-Route::post('/login/register',[UserController::class, 'register'])->name('member-register');
+Route::get('/login/register',[UserController::class, 'regist'])->name('warga-regist');
+Route::post('/login/register',[UserController::class, 'register'])->name('warga-register');
 
 Route::middleware('warga')->group(function () {
     Route::get('/', function () {
