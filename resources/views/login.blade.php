@@ -9,26 +9,25 @@
 </head>
 <body class="bg-light min-vh-100 d-flex flex-column">
     <div class="container my-auto mt-5 text-white p-5 rounded">
-        <div class="card d-flex justify-content-center align-items-center mx-auto" style="width: 500px; height: 400px; background-color: #386641">
-            <div class="mt-5" style="color: #FED16A">
-                <h2>Welcome To</h2>
-                <h2>Our Dues</h2>
+        <div class="card d-flex justify-content-center align-items-center mx-auto rounded-5 p-5" style="width: 500px; background-color: #386641">
+            <div class="d-flex text-center" style="color: #FED16A; width: 200px;">
+                <h2>Welcome To Our Dues</h2>
             </div>
-            <div class="card-body" style="height: 200px; width: 400px; justify-content: center; align-items: center; display: flex; flex-direction: column;">
+            <div class="mt-5" style="height: 200px; width: 400px; justify-content: center; align-items: center; display: flex; flex-direction: column;">
                 <form action="{{ route('auth.login') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="text" name="username" class="form-control mb-3" placeholder="Username">
-                    <input type="text" name="password" class="form-control mb-3" placeholder="Password">
+                    <input type="password" name="password" class="form-control mb-3" placeholder="Password">
                     <button class="btn" style="width: 300px; background-color: #FED16A; color: #386641" type="submit">Login</button>
                 </form>
-                <div class="d-flex mt-2 gap-2">
+                <div class="d-flex mt-3 gap-2">
                     <a style="display: flex; font-size: 15px; color: #FED16A">Dont Have Any Account? </a>
-                    <a href="/login/register" style="font-size: 15px; color: #FED16A">Sign Up Here</a>
+                    <a href="/login/register" class="nav-link" style="font-size: 15px; color: #FED16A">Sign Up Here</a>
                 </div>
             </div>
         </div>
     </div>
-    <footer class="text-center mt-5" style="color: #FED16A; background-color: #386641;">
+    <footer class="d-flex justify-content-center align-items-center p-3" style="color: #FED16A; background-color: #386641;">
         <p>&copy; {{ date('Y') }} OurDues. All rights reserved.</p>
     </footer>
 </body>
