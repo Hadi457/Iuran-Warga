@@ -20,10 +20,6 @@
                     <input type="password" name="password" class="form-control mb-3" placeholder="Password">
                     <button class="btn" style="width: 300px; background-color: #FED16A; color: #386641" type="submit">Login</button>
                 </form>
-                <div class="d-flex mt-3 gap-2">
-                    <a style="display: flex; font-size: 15px; color: #FED16A">Dont Have Any Account? </a>
-                    <a href="/login/register" class="nav-link" style="font-size: 15px; color: #FED16A">Sign Up Here</a>
-                </div>
             </div>
         </div>
     </div>
