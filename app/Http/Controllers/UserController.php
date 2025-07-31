@@ -40,10 +40,10 @@ class UserController extends Controller
 
         return redirect()->back()->with('pesan','login failed');
     }
-    public function regist(){
+    public function create(){
         return view('regist');
     }
-    public function register(Request $request){
+    public function store(Request $request){
         $request->validate([
             'name' => 'required|string',
             'username' => 'required|string|unique:users,username',
@@ -54,6 +54,11 @@ class UserController extends Controller
             'username' => $request->username,
             'password' => bcrypt($request->password),
         ]);
-        return redirect()->route('login')->with('pesanregist','Registered successfully');
+        return redirect()->route('data-warga')->with('pesanregist','Registered successfully');
+    }
+
+    public function datawarga(){
+        $data['warga'] = User::all();
+        return view('Administrator.warga', $data);
     }
 }

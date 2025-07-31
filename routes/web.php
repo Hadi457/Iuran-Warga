@@ -7,9 +7,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login',[UserController::class, 'auth'])->name('login');
 Route::post('/login',[UserController::class, 'authentication'])->name('auth.login');
 
-Route::get('/login/register',[UserController::class, 'regist'])->name('warga-regist');
-Route::post('/login/register',[UserController::class, 'register'])->name('warga-register');
-
 Route::middleware('warga')->group(function () {
     Route::get('/', function () {
         return view('home');
@@ -22,6 +19,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/dashbord', function () {
         return view('Administrator.dashboard');
     })->name('dashbord');
+<<<<<<< HEAD
     Route::get('/iuran', function () {
         return view('Administrator.iuran');
     })->name('iuran');
@@ -31,4 +29,9 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/add', function () {
         return view('Administrator.add');
     })->name('add');
+=======
+    Route::get('/data-warga', [UserController::class, 'datawarga'])->name('data-warga');
+    Route::get('/create-warga',[UserController::class, 'create'])->name('warga-create');
+    Route::post('/create-warga',[UserController::class, 'store'])->name('warga-store');
+>>>>>>> 609b12bcc7e7308e8532eb03ad72d652b2d63d94
 });
