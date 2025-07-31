@@ -22,4 +22,13 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/dashbord', function () {
         return view('Administrator.dashboard');
     })->name('dashbord');
+    Route::get('/iuran', function () {
+        return view('Administrator.iuran');
+    })->name('iuran');
+    Route::get('/warga', function () {
+        return view('Administrator.warga');
+    })->name('warga');
+    Route::get('/add', function () {
+        return view('Administrator.add');
+    })->name('add');
 });

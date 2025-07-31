@@ -19,5 +19,11 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin123'),
             'level' => 'Admin',
         ]);
+        User::create([
+            'name' => 'member User',
+            'username' => 'member',
+            'password' => bcrypt('warga123'),
+            'level' => 'Warga',
+        ]);
     }
 }

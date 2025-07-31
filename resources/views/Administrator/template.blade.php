@@ -13,6 +13,11 @@
       width: 250px;
       height: 100vh;
       background-color: #386641;
+      color: white
+    }
+    .sidebar .nav-link:hover {
+    background-color: #2c4a32;
+    color: white;
     }
     .sidebar a {
       color: #FED16A
@@ -20,6 +25,7 @@
     .sidebar a:hover {
       background-color: #2c4a32;
     }
+
     h4, a {
       color: #FED16A;
     }
@@ -30,21 +36,21 @@
     <h4 class="mb-4">OurDues</h4>
     <ul class="nav nav-pills flex-column">
       <li class="nav-item">
-        <a href="#" class="nav-link">Dashboard</a>
+        <a href="/dashbord" class="nav-link">Dashboard</a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">Data Iuran</a>
+        <a href="/iuran" class="nav-link">Data Iuran</a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">Laporan</a>
-      </li>
-      <li class="nav-item mt-auto">
-        <form action="{{ route('logout') }}" method="POST">
-          @csrf
-          <button type="submit" class="btn btn-danger w-100 mt-4">Logout</button>
-        </form>
+        <a href="/warga" class="nav-link">Data Warga</a>
       </li>
     </ul>
+        <div class="nav-item mt-auto">
+          <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-danger w-100 mt-4">Logout</button>
+          </form>
+        </div>
   </div>
     <div class="mt-4">
         @yield('content')
