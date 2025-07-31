@@ -27,7 +27,6 @@ class UserController extends Controller
 
         if (Auth::attempt($validated)) {
             $user = Auth::user();
-
             if ($user->level == 'Admin') {
                 return redirect()->route('dashbord')->with('pesan', 'Login success as admin');
             } else if ($user->level == 'Warga') {

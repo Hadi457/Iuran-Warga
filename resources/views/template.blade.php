@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>@yield('title', 'Iuran Warga')</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link href="{{asset('fontawesome/css/all.min.css')}}" rel="stylesheet">
 </head>
 <body class="bg-light min-vh-100 d-flex flex-column">
     <nav class="navbar navbar-expand-lg p-3" style="background-color: #386641;">
@@ -46,6 +47,6 @@
     <div class="container mt-4">
         @yield('content')
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('assets/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 </body>
 </html>
