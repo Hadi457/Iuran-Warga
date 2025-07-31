@@ -44,7 +44,7 @@
         <a href="/iuran" class="nav-link">Data Iuran</a>
       </li>
       <li class="nav-item">
-        <a href="/warga" class="nav-link">Data Warga</a>
+        <a href="/data-warga" class="nav-link">Data Warga</a>
       </li>
     </ul>
         <div class="nav-item mt-auto">

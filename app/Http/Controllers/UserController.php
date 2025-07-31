@@ -40,7 +40,7 @@ class UserController extends Controller
         return redirect()->back()->with('pesan','login failed');
     }
     public function create(){
-        return view('regist');
+        return view('Administrator.create-warga');
     }
     public function store(Request $request){
         $request->validate([
