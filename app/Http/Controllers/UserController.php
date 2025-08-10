@@ -8,6 +8,19 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function edit()
+    {
+        return view('editprofil');
+    }
+    public function contact()
+    {
+        return view('contact');
+    }
+    public function tata()
+    {
+        return view('tatatertib');
+    }
+
     public function logout()
     {
         Auth::logout();
@@ -59,5 +72,11 @@ class UserController extends Controller
     public function datawarga(){
         $data['warga'] = User::all();
         return view('Administrator.warga', $data);
+    }
+
+    public function profil()
+    {
+        $user = Auth::user();
+        return view('profil', compact('user'));
     }
 }

@@ -20,15 +20,11 @@ class DatabaseSeeder extends Seeder
             'level' => 'Admin',
         ]);
         User::create([
-<<<<<<< HEAD
-            'name' => 'member User',
-            'username' => 'member',
-=======
+
             'name' => 'Warga User',
             'alamat' => 'Jl. Contoh No. 123',
             'no_telepon' => '08123456789',
             'username' => 'warga',
->>>>>>> 609b12bcc7e7308e8532eb03ad72d652b2d63d94
             'password' => bcrypt('warga123'),
             'level' => 'Warga',
         ]);

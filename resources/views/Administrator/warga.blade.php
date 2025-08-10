@@ -13,6 +13,7 @@
                     <th>Username</th>
                     <th>Alamat</th>
                     <th>No. Telepon</th>
+                    <th>Level</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -24,6 +25,7 @@
                     <td>{{ $item->username }}</td>
                     <td>{{ $item->alamat }}</td>
                     <td>{{ $item->no_telepon }}</td>
+                    <td>{{ $item->level }}</td>
                     <td>
                         <a class="btn btn-warning" href="#">
                             <i class="fa-solid fa-pen-to-square"></i>

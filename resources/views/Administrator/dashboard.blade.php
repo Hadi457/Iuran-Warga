@@ -7,6 +7,7 @@
             <div class="card-body d-flex align-items-center justify-content-between text-white">
                 <i class="fa-solid fa-person" style="font-size: 50px; color: #FED16A"></i>
                 <div class="item-count text-end fw-bold" style="color: #FED16A">
+                    <h1>{{ $users->count()}}</h1>
                     <h6>Data Warga</h6>
                 </div>
             </div>

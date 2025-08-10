@@ -9,7 +9,7 @@
 <body class="bg-light min-vh-100 d-flex flex-column">
     <nav class="navbar navbar-expand-lg p-3" style="background-color: #386641;">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bold" style="color: #FED16A;" href="#">OurDues</a>
+            <a class="navbar-brand fw-bold" style="color: #FED16A;" href="#">RW03</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -17,29 +17,40 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <span class="nav-link">Hi, {{ Auth::user()->name }}</span>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <button class="btn dropdown-toggle" style="background-color: #FED16A;" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            Menu
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                            <li><h5 class="dropdown-header">Dropdown header 1</h5></li>
-                            <li><a class="dropdown-item" href="#">Link 1</a></li>
-                            <li><a class="dropdown-item" href="#">Link 2</a></li>
-                            <li><a class="dropdown-item" href="#">Link 3</a></li>
-                            <li><h5 class="dropdown-header">Dropdown header 2</h5></li>
-                            <li>
-                                @auth
-                                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger btn-sm ms-2">Logout</button>
-                                    </form>
-                                @endauth
-                            </li>
-                        </ul>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/tata">Tata Tertib</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/contact">Contact</a>
+                </li>
+                <li class="ms-2 nav-item dropdown">
+                    <button class="btn dropdown-toggle" style="background-color: #FED16A;" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        Menu
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                        <li class="nav-item">
+                            <span class="nav-link">Hi, {{ Auth::user()->name }}</span>
+                        </li>
+                        <li><h4 class="dropdown-header">Menu</h4></li>
+                        <li><a class="dropdown-item" href="/profil">Profil</a></li>
+                        <li><a class="dropdown-item" href="#">Tagihan</a></li>
+                        <hr>
+                        <li>
+                            @auth
+                                <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger btn-sm ms-2">Logout</button>
+                                </form>
+                            @endauth
+                        </li>
+                    </ul>
+                </li>
                 </ul>
             </div>
         </div>
