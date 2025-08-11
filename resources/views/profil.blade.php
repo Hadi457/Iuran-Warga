@@ -7,11 +7,11 @@
             </div>
                 <div class="card-body px-4 py-5" style="display:flex; flex-direction:column; justify-content:center; align-items:center">
                     <div class="mt-5" style="width: 400px; justify-content: center; align-items: center; display: flex; flex-direction: column;">
-                            <input type="text" name="name" class="form-control mb-3" placeholder="Nama" value="{{ $user->name ?? '' }}" readonly>
-                            <input type="text" name="username" class="form-control mb-3" placeholder="Username" value="{{ $user->username ?? '' }}" readonly>
-                            <input type="text" name="alamat" class="form-control mb-3" placeholder="Alamat" value="{{ $user->alamat ?? '' }}" readonly>
-                            <input type="text" name="no_telepon" class="form-control mb-3" placeholder="Nomor Telepon" value="{{ $user->no_telepon ?? '' }}" readonly>
-                            <a class="btn fw-bold" style="width: 300px; background-color: #386641; color: #FED16A" href="/edit">Edit Profil</a>
+                            <input type="text" name="name" class="form-control mb-3" placeholder="Nama" value="{{ $warga->name ?? '' }}" readonly>
+                            <input type="text" name="username" class="form-control mb-3" placeholder="Username" value="{{ $warga->username ?? '' }}" readonly>
+                            <input type="text" name="alamat" class="form-control mb-3" placeholder="Alamat" value="{{ $warga->alamat ?? '' }}" readonly>
+                            <input type="text" name="no_telepon" class="form-control mb-3" placeholder="Nomor Telepon" value="{{ $warga->no_telepon ?? '' }}" readonly>
+                            <a class="btn fw-bold" style="width: 300px; background-color: #386641; color: #FED16A" href="{{route('profile-edit', Crypt::encrypt($warga->id))}}">Edit Profil</a>
                     </div>
                 </div>
         </div>
