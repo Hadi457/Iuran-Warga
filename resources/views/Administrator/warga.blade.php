@@ -27,21 +27,13 @@
                     <td>{{ $item->no_telepon }}</td>
                     <td>{{ $item->level }}</td>
                     <td>
-                        <a class="btn btn-warning" href="#">
+                        <a class="btn btn-warning" href="{{route('warga-edit', Crypt::encrypt($item->id))}}">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
-                        <a class="btn btn-danger" href="#">
+                        <a class="btn btn-danger" href="{{route('warga-delete',Crypt::encrypt($item->id))}}" onclick="return confirm('Hapus data ini?')">
                             <i class="fa-solid fa-trash"></i>
                         </a>
                     </td>
-                    {{-- <td>
-                        <a class="btn btn-warning" href="{{route('#', Crypt::encrypt($item->id))}}">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
-                        <a class="btn btn-danger" href="{{route('#',Crypt::encrypt($item->id))}}" onclick="return confirm('Hapus data ini?')">
-                            <i class="fa-solid fa-trash"></i>
-                        </a>
-                    </td> --}}
                 </tr>
             </tbody>
             @endforeach

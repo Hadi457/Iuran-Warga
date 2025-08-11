@@ -13,7 +13,8 @@ Route::middleware('warga')->group(function () {
         return view('home');
     })->name('home');
     Route::get('/profil', [UserController::class, 'profil'])->name('profil');
-    Route::get('/edit', [UserController::class, 'edit'])->name('edit');
+    Route::get('/edit-profil/{id}',[UserController::class, 'edit'])->name('profile-edit');
+    Route::post('/edi-profil/{id}',[UserController::class, 'update'])->name('profile-update');
     Route::get('/tata', [UserController::class, 'tata'])->name('tata');
     Route::get('/contact', [UserController::class, 'contact'])->name('contact');
 });
@@ -25,4 +26,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/data-warga', [UserController::class, 'datawarga'])->name('data-warga');
     Route::get('/create-warga',[UserController::class, 'create'])->name('warga-create');
     Route::post('/create-warga',[UserController::class, 'store'])->name('warga-store');
+    Route::get('/delete-warga/{id}',[UserController::class, 'delete'])->name('warga-delete');
+    Route::get('/edit-warga/{id}',[UserController::class, 'edit'])->name('warga-edit');
+    Route::post('/edit-wargat/{id}',[UserController::class, 'update'])->name('warga-update');
 });
