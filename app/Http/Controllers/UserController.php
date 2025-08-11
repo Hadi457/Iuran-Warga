@@ -26,7 +26,7 @@ class UserController extends Controller
         Auth::logout();
         return redirect()->route('login')->with('pesan', 'You have been logged out.');
     }
-    
+
     public function auth()
     {
         return view('login');
@@ -36,12 +36,11 @@ class UserController extends Controller
         'username' => 'required|string',
         'password' => 'required',
         ]);
-
-
+        
         if (Auth::attempt($validated)) {
             $user = Auth::user();
             if ($user->level == 'Admin') {
-                return redirect()->route('dashbord')->with('pesan', 'Login success as admin');
+                return redirect()->route('dashboard')->with('pesan', 'Login success as admin');
             } else if ($user->level == 'Warga') {
                 return redirect()->route('home')->with('pesan', 'Login success as warga');
             } else {

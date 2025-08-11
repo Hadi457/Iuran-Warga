@@ -16,8 +16,8 @@
 
     <div class="container my-auto text-white p-5 rounded">
         <div class="card d-flex justify-content-center align-items-center mx-auto rounded-5 p-5" style="width: 500px; background-color: #386641">
-            <div class="d-flex text-center" style="color: #FED16A; width: 200px;">
-                <h2>Welcome To Our Dues</h2>
+            <div class="d-flex text-center" style="color: #FED16A; width: 300px;">
+                <h2>Wiujeung Sumping Wargi RW03</h2>
             </div>
             <div class="mt-5" style="height: 200px; width: 400px; justify-content: center; align-items: center; display: flex; flex-direction: column;">
                 <form action="{{ route('auth.login') }}" method="POST" enctype="multipart/form-data">
@@ -30,7 +30,7 @@
         </div>
     </div>
     <footer class="d-flex justify-content-center align-items-center p-3" style="color: #FED16A; background-color: #386641;">
-        <p>&copy; {{ date('Y') }} OurDues. All rights reserved.</p>
+        <p>&copy; {{ date('Y') }} KitaRW03. All rights reserved.</p>
     </footer>
 </body>
 <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

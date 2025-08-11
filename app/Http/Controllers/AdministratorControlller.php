@@ -13,4 +13,8 @@ class AdministratorControlller extends Controller
 
         return view('administrator.dashboard', $data);
     }
+    public function iuran()
+    {
+        return view('administrator.iuran');
+    }
 }

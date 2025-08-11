@@ -35,7 +35,7 @@
 </head>
 <body>
   <div class="sidebar d-flex flex-column p-3">
-    <h4 class="mb-4">RW03</h4>
+    <h4 class="mb-4">KitaRW03</h4>
     <ul class="nav nav-pills flex-column">
       <li class="nav-item">
         <a href="/dashbord" class="nav-link">Dashboard</a>
