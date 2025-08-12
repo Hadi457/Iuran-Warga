@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DuesCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,7 @@ class AdministratorControlller extends Controller
     }
     public function iuran()
     {
-        return view('administrator.iuran');
+        $data['dues'] = DuesCategory::all();
+        return view('administrator.iuran',$data);
     }
 }
