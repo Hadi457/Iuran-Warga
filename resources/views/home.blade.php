@@ -38,6 +38,20 @@
     <div class="w-100 position-relative mt-5" style="height: 500px;">
         <h2 class="mt-5">Tagihan Aktif</h2>
         <div style="background-color: #386641; width:200px; height: 5px;"></div>
+        <div class="row g-3 mt-3">
+            @foreach ($tagihan as $item)
+            <div class="col-3 mb-3">
+                <div class="card h-100 d-flex flex-column">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $item->period }}</h5>
+                        <img class="card-img-top" style="object-fit: contain; width: 100%; height: 300px" src="{{ asset('storage/image-iuran/'.$item->image)}}" alt="Title" />
+                        <p class="card-text">Nominal: Rp. {{ number_format($item->nominal, 0, ',', '.') }}</p>
+                        <a href="#" class="btn btn-primary">Bayar Tagihan</a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
     </div>
 </div>
 @endsection

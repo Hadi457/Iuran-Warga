@@ -26,7 +26,6 @@
                         <img src="{{ asset('storage/image-iuran/'.$item->image)}}" width="100" height="100" alt="">
                     </td>
                     <td>
-                        a
                         {{-- <a class="btn btn-warning" href="{{route('warga-edit', Crypt::encrypt($item->id))}}">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
