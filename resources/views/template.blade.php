@@ -59,7 +59,7 @@
         @yield('content')
     </div>
     <script src="{{asset('assets/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <footer class="d-flex justify-content-center align-items-center p-3" style="color: #FED16A; background-color: #386641;">
+        <footer class="mt-5 d-flex justify-content-center align-items-center p-3" style="color: #FED16A; background-color: #386641;">
         <p>&copy; {{ date('Y') }} KitaRW03. All rights reserved.</p>
     </footer>
 </body>

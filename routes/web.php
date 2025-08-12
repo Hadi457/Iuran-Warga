@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdministratorControlller;
+use App\Http\Controllers\DuesCategoryController;
 use App\Http\Controllers\UserController;
+use App\Models\DuesCategory;
 use Illuminate\Support\Facades\Route;
 
 
@@ -10,7 +12,8 @@ Route::post('/login',[UserController::class, 'authentication'])->name('auth.logi
 
 Route::middleware('warga')->group(function () {
     Route::get('/', function () {
-        return view('home');
+        $data['tagihan'] = DuesCategory::all();
+        return view('home', $data);
     })->name('home');
     Route::get('/profil', [UserController::class, 'profil'])->name('profil');
     Route::get('/edit-profil/{id}',[UserController::class, 'edit'])->name('profile-edit');
@@ -30,4 +33,6 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/delete-warga/{id}',[UserController::class, 'delete'])->name('warga-delete');
     Route::get('/edit-warga/{id}',[UserController::class, 'edit'])->name('warga-edit');
     Route::post('/edit-wargat/{id}',[UserController::class, 'update'])->name('warga-update');
+    Route::get('/create-iuran',[DuesCategoryController::class, 'create'])->name('iuran-create');
+    Route::post('/create-iuran',[DuesCategoryController::class, 'store'])->name('iuran-store');
 });
