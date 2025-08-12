@@ -34,7 +34,7 @@ class UserController extends Controller
         'username' => 'required|string',
         'password' => 'required',
         ]);
-        
+
         if (Auth::attempt($validated)) {
             $user = Auth::user();
             if ($user->level == 'Admin') {
@@ -83,7 +83,7 @@ class UserController extends Controller
             return view('editprofil', $data);
         }
     }
-    
+
     public function update(Request $request, String $id){
         if(Auth::user()->level == 'Admin'){
             $id = $this->decryptId($id);
@@ -101,7 +101,7 @@ class UserController extends Controller
             return redirect()->route('data-warga')->with('success','successfully updated member');
         } else {
             $id = $this->decryptId($id);
-            
+
             $validate = $request->validate([
                 'name' => 'required|string',
                 'username' => 'required|string',
@@ -123,7 +123,9 @@ class UserController extends Controller
     }
     public function datawarga(){
         $data['warga'] = User::all();
-        return view('Administrator.warga', $data);
+        return view('Administrato
+
+        r.warga', $data);
     }
 
     public function profil()

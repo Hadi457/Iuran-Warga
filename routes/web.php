@@ -14,7 +14,7 @@ Route::middleware('warga')->group(function () {
     })->name('home');
     Route::get('/profil', [UserController::class, 'profil'])->name('profil');
     Route::get('/edit-profil/{id}',[UserController::class, 'edit'])->name('profile-edit');
-    Route::post('/edi-profil/{id}',[UserController::class, 'update'])->name('profile-update');
+    Route::post('/edit-profil/{id}',[UserController::class, 'update'])->name('profile-update');
     Route::get('/tata', [UserController::class, 'tata'])->name('tata');
     Route::get('/contact', [UserController::class, 'contact'])->name('contact');
 });
