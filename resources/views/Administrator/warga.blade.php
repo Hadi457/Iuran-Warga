@@ -9,6 +9,7 @@
             <thead class="table-success">
                 <tr>
                     <th>ID</th>
+                    <th>NIK</th>
                     <th>Nama</th>
                     <th>Username</th>
                     <th>Alamat</th>
@@ -20,12 +21,14 @@
             @foreach ($warga as $item)
             <tbody>
                 <tr>
-                    <td scope="row">{{ $loop->iteration }}</td>
+                    <td scope="row">{{ $item->id }}</td>
+                    <td>{{$item->nik}}</td>
                     <td>{{ $item->name }}</td>
-                    <td>{{ $item->username }}</td>
-                    <td>{{ $item->alamat }}</td>
-                    <td>{{ $item->no_telepon }}</td>
-                    <td>{{ $item->level }}</td>
+                    <td>{{ $item->user->username }}</td>
+                    <td>{{ $item->addres }}</td>
+                    <td>{{ $item->number_handphone }}</td>
+                    <td>{{ $item->user->level}}</td>
+                    
                     <td>
                         <a class="btn btn-warning" href="{{route('warga-edit', Crypt::encrypt($item->id))}}">
                             <i class="fa-solid fa-pen-to-square"></i>

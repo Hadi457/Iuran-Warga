@@ -28,12 +28,16 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/dashbord', [AdministratorControlller::class, 'index'])->name('dashboard');
     Route::get('/iuran', [AdministratorControlller::class, 'iuran'])->name('data-iuran');
     Route::get('/tagihan', [AdministratorControlller::class, 'tagihan'])->name('tagihan');
+    Route::get('/kategori-iuran', [AdministratorControlller::class, 'iuran'])->name('kategori-iuran');
     Route::get('/data-warga', [UserController::class, 'datawarga'])->name('data-warga');
     Route::get('/create-warga',[UserController::class, 'create'])->name('warga-create');
     Route::post('/create-warga',[UserController::class, 'store'])->name('warga-store');
     Route::get('/delete-warga/{id}',[UserController::class, 'delete'])->name('warga-delete');
     Route::get('/edit-warga/{id}',[UserController::class, 'edit'])->name('warga-edit');
     Route::post('/edit-wargat/{id}',[UserController::class, 'update'])->name('warga-update');
-    Route::get('/create-iuran',[DuesCategoryController::class, 'create'])->name('iuran-create');
-    Route::post('/create-iuran',[DuesCategoryController::class, 'store'])->name('iuran-store');
+    Route::get('/create-kategori-iuran',[DuesCategoryController::class, 'create'])->name('iuran-create');
+    Route::post('/create-kategori-iuran',[DuesCategoryController::class, 'store'])->name('iuran-store');
+    Route::get('/edit-kategori-iuran/{id}',[DuesCategoryController::class, 'edit'])->name('iuran-edit');
+    Route::post('/edit-kategori-iuran/{id}',[DuesCategoryController::class, 'update'])->name('iuran-update');
+    Route::get('/delete-kategori-iuran/{id}',[DuesCategoryController::class, 'delete'])->name('iuran-delete');
 });

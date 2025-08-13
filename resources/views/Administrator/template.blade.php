@@ -41,7 +41,7 @@
         <a href="/dashbord" class="nav-link">Dashboard</a>
       </li>
       <li class="nav-item">
-        <a href="/iuran" class="nav-link">Data Iuran</a>
+        <a href="/kategori-iuran" class="nav-link">Kategori Iuran</a>
       </li>
       <li class="nav-item">
         <a href="/data-warga" class="nav-link">Data Warga</a>

@@ -20,8 +20,6 @@ class User extends Authenticatable
         'name',
         'username',
         'password',
-        'alamat',
-        'no_telepon',
         'level',
     ];
 
@@ -47,7 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
+    public function member(){
+        return $this->hasOne(Member::class, 'users_id');
+    }
     public function officer()
     {
         return $this->hasMany(Officer::class, 'iduser');
