@@ -46,6 +46,9 @@
       <li class="nav-item">
         <a href="/data-warga" class="nav-link">Data Warga</a>
       </li>
+      <li class="nav-item">
+        <a href="/tagihan" class="nav-link">Tagihan</a>
+      </li>
     </ul>
         <div class="nav-item mt-auto">
           <form action="{{ route('logout') }}" method="POST">

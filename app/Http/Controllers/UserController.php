@@ -123,9 +123,7 @@ class UserController extends Controller
     }
     public function datawarga(){
         $data['warga'] = User::all();
-        return view('Administrato
-
-        r.warga', $data);
+        return view('Administrator.warga', $data);
     }
 
     public function profil()

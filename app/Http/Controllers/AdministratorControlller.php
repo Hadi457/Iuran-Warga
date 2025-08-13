@@ -19,4 +19,8 @@ class AdministratorControlller extends Controller
         $data['dues'] = DuesCategory::all();
         return view('administrator.iuran',$data);
     }
+    public function tagihan()
+    {
+        return view('administrator.officer');
+    }
 }
