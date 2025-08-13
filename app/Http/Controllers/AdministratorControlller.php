@@ -17,6 +17,6 @@ class AdministratorControlller extends Controller
     public function iuran()
     {
         $data['dues'] = DuesCategory::all();
-        return view('administrator.iuran',$data);
+        return view('Administrator.kategori-iuran',$data);
     }
 }

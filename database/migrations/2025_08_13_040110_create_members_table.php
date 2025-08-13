@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dues_categories', function (Blueprint $table) {
+        Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->enum('period',["bulanan", "tahunan", "mingguan"]);
-            $table->integer('nominal');
-            $table->string('status');
+            $table->string('nik', 16)->unique();
+            $table->string('name', 40);
+            $table->string('addres');
+            $table->string('number_handphone',13);
+            $table->foreignId('users_id')->references('id')->on('users');
+            $table->string('image', 255)->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dues_categories');
+        Schema::dropIfExists('members');
     }
 };

@@ -22,7 +22,6 @@
                         <option value="mingguan">mingguan</option>
                     </select>
                     <input type="text" name="nominal" class="form-control mb-3" placeholder="Nominal" required>
-                    <input type="file" name="image" id="image" class="form-control mb-3" placeholder="Gambar (opsional)">
                     <input type="text" name="status" class="form-control mb-3" placeholder="Status">
                     <button type="submit" class="btn" style="width: 300px; background-color: #FED16A; color: #386641" type="submit">Simpan</button>
                 </form>

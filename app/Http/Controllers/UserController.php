@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
 use App\Models\User;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -55,15 +57,35 @@ class UserController extends Controller
     public function store(Request $request){
         $request->validate([
             'name' => 'required|string',
+            'nik' => 'required|string|unique:members,nik',
             'username' => 'required|string|unique:users,username',
+            'number_handphone' => 'numeric|min:0',
+            'addres' => 'required|string',
             'password' => 'required',
+            'image' => 'image|mimes:png,jpg,jpeg|max:3072',
         ]);
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'username' => $request->username,
-            'password' => bcrypt($request->password),
+            'level' => 'Warga',
+            'password' => bcrypt($request->password)
         ]);
-        return redirect()->route('data-warga')->with('pesanregist','Registered successfully');
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $filename = time() . "-" . $request->name . "." . $image->getClientOriginalExtension();
+            $image->storeAs('public/image-member', $filename);
+        }else{
+            $filename = "-";
+        }
+        Member::Create([
+            'name' => $request->name,
+            'nik' => $request->nik,
+            'number_handphone' => $request->number_handphone,
+            'addres' => $request->addres,
+            'image' => $filename,
+            'users_id' => $user->id,
+        ]);
+        return redirect()->route('data-warga')->with('succcess','Successfully added member');
     }
     private function decryptId($id){
         try {
@@ -75,11 +97,11 @@ class UserController extends Controller
     public function edit(String $id){
         if(Auth::user()->level == 'Admin'){
             $id = $this->decryptId($id);
-            $data['warga'] = User::findOrFail($id);
+            $data['warga'] = Member::with('user')->findOrFail($id);
             return view('Administrator.edit-warga', $data);
         }else{
             $id = $this->decryptId($id);
-            $data['warga'] = User::findOrFail($id);
+            $data['warga'] = Member::with('user')->findOrFail($id);
             return view('editprofil', $data);
         }
     }
@@ -88,41 +110,62 @@ class UserController extends Controller
         if(Auth::user()->level == 'Admin'){
             $id = $this->decryptId($id);
             $validate = $request->validate([
-                'name' => 'required|string',
-                'username' => 'required|string',
-                'alamat' => 'required|string',
-                'no_telepon' => 'required|string',
+            'name' => 'required|string',
+            'nik' => 'required|string',
+            'number_handphone' => 'numeric|min:0',
+            'addres' => 'required|string',
+            'image' => 'image|mimes:png,jpg,jpeg|max:3072',
+
             ]);
-            $warga = User::findOrFail($id);
+            $member = Member::findOrFail($id);
+            $user = User::findOrFail($member->users_id);
+            $user->name = $request->name;
+            $user->username = $request->username;
             if($request->password){
-                $warga->password = bcrypt($request->password);
+                $user->password = bcrypt($request->password);
             }
-            $warga->update($validate);
-            return redirect()->route('data-warga')->with('success','successfully updated member');
-        } else {
+            $user->save();
+            $member->update($validate);
+            return redirect()->route('data-warga')->with('pesan','successfully updated warga');
+        }else{
             $id = $this->decryptId($id);
-            
             $validate = $request->validate([
                 'name' => 'required|string',
+                'nik' => 'required|string',
                 'username' => 'required|string',
-                'alamat' => 'required|string',
-                'no_telepon' => 'required|string',
+                'number_handphone' => 'numeric|min:0',
+                'addres' => 'required|string',
+                'password' => 'required',
+                'image' => 'image|mimes:png,jpg,jpeg|max:3072',
             ]);
-            $warga = User::findOrFail($id);
-            $warga->update($validate);
-            return redirect()->route('profil')->with('success', 'Successfully updated profile');
+            $member = Member::findOrFail($id);
+            $user = User::findOrFail($member->users_id);
+            if($request->hasFile('image')){
+                if(Storage::exists('image-warga/' . $member->image)){
+                    Storage::delete('image-warga/' . $member->image);
+                }
+                $image = $request->file('image');
+                $filename = time() . "-" . $request->name . "." . $image->getClientOriginalExtension();
+                $image->storeAs('public/image-warga', $filename);
+
+                $validate['image'] = $filename;
+            }
+            $user->name = $request->name;
+            $user->save();
+            $member->update($validate);
+            return redirect()->route('profil')->with('pesan','successfully updated profile');
         }
     }
     public function delete(String $id){
         $id = $this->decryptId($id);
 
-        $warga = User::findOrFail($id);
-        $warga->delete();
+        $member = Member::findOrFail($id);
+        $member->delete();
 
-        return redirect()->back()->with('success', 'Successfully deleted member');
+        return redirect()->back()->with('success', 'Successfully deleted warga');
     }
     public function datawarga(){
-        $data['warga'] = User::all();
+        $data['warga'] = Member::orderBy('created_at', 'desc')->get();
         return view('Administrator.warga', $data);
     }
 
