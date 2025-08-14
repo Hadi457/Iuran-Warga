@@ -16,6 +16,11 @@ class DuesCategoryController extends Controller
             abort(404);
         }
     }
+    public function index()
+    {
+        $data['dues'] = DuesCategory::all();
+        return view('Administrator.kategori-iuran', $data);
+    }
     public function create()
     {
         return view('Administrator.create-kategori-iuran');

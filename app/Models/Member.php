@@ -10,4 +10,7 @@ class Member extends Model
     public function user(){
         return $this->belongsTo(User::class, 'users_id');
     }
+    public function officer(){
+        return $this->hasMany(Officer::class, 'idmember');
+    }
 }

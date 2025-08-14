@@ -14,13 +14,10 @@ class AdministratorControlller extends Controller
 
         return view('administrator.dashboard', $data);
     }
-    public function iuran()
+    public function category()
     {
         $data['dues'] = DuesCategory::all();
         return view('Administrator.kategori-iuran',$data);
     }
-    public function tagihan()
-    {
-        return view('administrator.officer');
-    }
+    
 }

@@ -10,4 +10,7 @@ class Officer extends Model
     public function user(){
         return $this->belongsTo(User::class, 'iduser');
     }
+    public function member(){
+        return $this->belongsTo(Member::class, 'idmember');
+    }
 }

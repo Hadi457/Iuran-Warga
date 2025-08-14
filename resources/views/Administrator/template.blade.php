@@ -47,7 +47,10 @@
         <a href="/data-warga" class="nav-link">Data Warga</a>
       </li>
       <li class="nav-item">
-        <a href="/tagihan" class="nav-link">Tagihan</a>
+        <a href="/officer" class="nav-link">Officer</a>
+      </li>
+      <li class="nav-item">
+        <a href="/tagihan" class="nav-link">paymen</a>
       </li>
     </ul>
         <div class="nav-item mt-auto">
