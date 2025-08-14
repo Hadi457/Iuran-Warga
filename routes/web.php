@@ -46,5 +46,5 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/edit-kategori-iuran/{id}',[DuesCategoryController::class, 'edit'])->name('iuran-edit');
     Route::post('/edit-kategori-iuran/{id}',[DuesCategoryController::class, 'update'])->name('iuran-update');
     Route::get('/delete-kategori-iuran/{id}',[DuesCategoryController::class, 'delete'])->name('iuran-delete');
-
+    Route::get('/pembayaran', [PaymentController::class, 'index'])->name('pembayaran');
 });
