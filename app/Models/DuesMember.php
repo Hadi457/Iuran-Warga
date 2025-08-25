@@ -13,6 +13,6 @@ class DuesMember extends Model
     }
     public function duesCategory()
     {
-        return $this->belongsTo(DuesCategory::class, 'idduescategory');
+        return $this->belongsTo(DuesCategory::class, 'dues_category_id');
     }
 }

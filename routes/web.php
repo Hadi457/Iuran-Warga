@@ -47,4 +47,9 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/edit-kategori-iuran/{id}',[DuesCategoryController::class, 'update'])->name('iuran-update');
     Route::get('/delete-kategori-iuran/{id}',[DuesCategoryController::class, 'delete'])->name('iuran-delete');
     Route::get('/pembayaran', [PaymentController::class, 'index'])->name('pembayaran');
+
+    // routes/web.php
+Route::get('/tagihan/{user}/pilih-kategori', [PaymentController::class, 'pilihKategori'])->name('tagihan.pilih');
+Route::post('/tagihan/{user}/simpan-kategori', [PaymentController::class, 'simpanKategori'])->name('tagihan.simpan');
+
 });

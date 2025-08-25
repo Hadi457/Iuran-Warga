@@ -1,4 +1,4 @@
->@extends('Administrator.template')
+@extends('Administrator.template')
 @section('content')
     <div class="container" style="width: 1000px; margin-top: 20px;">
         <h1>Data Tagihan</h1>
@@ -21,7 +21,7 @@
                     <th>Aksi</th>
                 </tr>
             </thead>
-            {{-- @foreach ($warga as $item)
+            @foreach ($warga as $item)
             <tbody>
                 <tr>
                     <td scope="row">{{ $item->id }}</td>
@@ -30,14 +30,13 @@
                     <td>{{ $item->user->username }}</td>
                     <td>{{ $item->addres }}</td>
                     <td>{{ $item->number_handphone }}</td>
-                    <td>{{ $item->user->level}}</td>
 
                     <td>
-                        <a class="btn btn-warning" href="{{route('tagihan.warga', Crypt::encrypt($item->id))}}">Lihat Tagihan</a>
+                        <a class="btn btn-warning" href="{{ route('tagihan.pilih', $item->id) }}">Lihat Tagihan</a>
                     </td>
                 </tr>
             </tbody>
-            @endforeach --}}
+            @endforeach
         </table>
     </div>
 @endsection
