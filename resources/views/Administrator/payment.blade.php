@@ -1,10 +1,25 @@
 @extends('Administrator.template')
 @section('content')
-    <div class="container" style="width: 1000px; margin-top: 20px;">
+    <div class="container">
         <h1>Data Warga</h1>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="alert mt-4 alert-success alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>{{session('success')}}</strong>
+            </div>
+        @endif
     </div>
-    <div class="container mt-5">
-        <a href="{{ route('payments.create') }}" class="btn btn-primary mb-3">+ Tambah Payment</a>
+    <div class="container mt-3">
+        <a class="btn" style="background-color: #386641; color: #FED16A" href="{{route('payments.create')}}">Tambah Payment</a>
         <table class="table table-bordered table-striped mt-3">
             <thead class="table-success">
                 <tr>
@@ -30,7 +45,10 @@
                     <td>{{ $item->user->level}}</td>
                     
                     <td>
-                        <a href="{{ route('payments.show', $item->id) }}" class="btn btn-info btn-sm">Detail</a>
+                        <a class="btn btn-warning" href="{{route('payments.detail', $item->id)}}">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </a>
+                        {{-- <a href="{{ route('payments.show', $item->id) }}" class="btn btn-info btn-sm">Detail</a> --}}
                     </td>
                 </tr>
             </tbody>

@@ -50,7 +50,7 @@ class User extends Authenticatable
     }
     public function officer()
     {
-        return $this->hasMany(Officer::class, 'iduser');
+        return $this->hasOne(Officer::class, 'iduser');
     }
     public function payment()
     {

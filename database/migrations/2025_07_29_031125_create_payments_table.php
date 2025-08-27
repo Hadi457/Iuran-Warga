@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('nominal');
             $table->enum('period', ['mingguan','bulanan','tahunan']);
             $table->date('due_date');
+            $table->date('payment_date');
             $table->string('periode_tagihan')->nullable();
             $table->integer('qty')->default(1);
             $table->foreignId('dues_category_id')->constrained('dues_categories')->onDelete('cascade');

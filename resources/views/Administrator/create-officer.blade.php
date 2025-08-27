@@ -1,6 +1,6 @@
 @extends('Administrator.template')
 @section('content')
-    <div class="container" style="width: 1000px; margin-top: 20px; margin-left: 50px;">
+    <div class="container">
         <h1>Tambah Officer</h1>
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -12,17 +12,17 @@
                 </ul>
             </div>
         @endif
-        <div class="container">
-            <div class="card-body" style="width: 400px; display: flex; flex-direction: column; align-items: center; margin-top: 20px;">
+        <div class="container mt-3">
+            <div class="card-body">
                 <form action="{{ route('officer-store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <select name="idmember" class="form-control mb-3">
+                    <select name="iduser" class="form-control mb-3">
                         <option value="">Pilih Warga</option>
                         @foreach ($members as $item)
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
                     </select>
-                    <button type="submit" class="btn" style="width: 300px; background-color: #FED16A; color: #386641">Simpan</button>
+                    <button type="submit" class="btn" style="width: 100%; background-color: #FED16A; color: #386641">Simpan</button>
                 </form>
             </div>
         </div>

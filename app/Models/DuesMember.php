@@ -15,4 +15,8 @@ class DuesMember extends Model
     {
         return $this->belongsTo(DuesCategory::class, 'dues_category_id');
     }
+    public function member()
+    {
+        return $this->belongsTo(Member::class, 'iduser', 'id');
+    }
 }

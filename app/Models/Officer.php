@@ -13,4 +13,8 @@ class Officer extends Model
     public function member(){
         return $this->belongsTo(Member::class, 'idmember');
     }
+    public function payments()
+    {
+        return $this->hasMany(Payment::class, 'officer_id');
+    }
 }

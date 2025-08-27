@@ -1,6 +1,6 @@
 @extends('Administrator.template')
 @section('content')
-    <div class="container" style="width: 1000px; margin-top: 20px; margin-left: 50px;">
+    <div class="container">
         <h1>Tambah Data Baru</h1>
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -12,8 +12,8 @@
                 </ul>
             </div>
         @endif
-        <div class="container">
-            <div class="card-body" style="width: 400px; display: flex; flex-direction: column; align-items: center; margin-top: 20px;">
+        <div class="container mt-3">
+            <div class="card-body">
                 <form action="{{ route('warga-store') }}" method="POST">
                     @csrf
                     <input type="text" name="name" class="form-control mb-3" placeholder="Nama" required>
@@ -22,7 +22,7 @@
                     <input type="text" name="number_handphone" class="form-control mb-3" placeholder="No. Telepon" required>
                     <input type="text" name="addres" class="form-control mb-3" placeholder="Alamat" required>
                     <input type="password" name="password" class="form-control mb-3" placeholder="Password" required>
-                    <button type="submit" class="btn" style="width: 300px; background-color: #FED16A; color: #386641" type="submit">Simpan</button>
+                    <button type="submit" class="btn" style="width: 100%; background-color: #FED16A; color: #386641" type="submit">Simpan</button>
                 </form>
             </div>
         </div>

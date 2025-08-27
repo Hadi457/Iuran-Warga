@@ -21,6 +21,6 @@ class Payment extends Model
     }
     public function officer()
     {
-        return $this->belongsTo(Officer::class);
+        return $this->belongsTo(Officer::class, 'officer_id');
     }
 }

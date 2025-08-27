@@ -30,13 +30,13 @@ class OfficerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'idmember' => 'required|exists:members,id|unique:officers,idmember',
+            'iduser' => 'required|exists:users,id|unique:officers,iduser',
         ], [
-            'idmember.unique' => 'Warga ini sudah menjadi Officer.',
+            'iduser.unique' => 'Warga ini sudah menjadi Officer.',
         ]);
 
         Officer::create([
-            'idmember' => $request->idmember,
+            'iduser' => $request->iduser,
         ]);
 
         return redirect()->route('officer')->with('success', 'Officer created successfully.');

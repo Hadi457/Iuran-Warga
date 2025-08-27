@@ -1,9 +1,9 @@
 @extends('Administrator.template')
 @section('content')
-    <div class="container" style="width: 1000px; margin-top: 20px;">
+    <div class="container">
         <h1>Data Warga</h1>
     </div>
-    <div class="container mt-5">
+    <div class="container mt-3">
         <a class="btn" style="background-color: #386641; color: #FED16A" href="{{route('warga-create')}}">Tambah Data</a>
         <table class="table table-bordered table-striped mt-3">
             <thead class="table-success">

@@ -1,11 +1,27 @@
 @extends('Administrator.template')
 @section('content')
-<div class="container mt-4">
-    <h3>Data Tagihan</h3>
-    <table class="table table-bordered">
+<div class="container">
+    <h1>Data Tagihan</h1>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if (session('success'))
+        <div class="alert mt-4 alert-success alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>{{session('success')}}</strong>
+        </div>
+    @endif
+    <table class="table table-bordered mt-3">
         <thead class="table-success">
             <tr>
                 <th>Nama Warga</th>
+                <th>Petugas</th>
                 <th>Periode</th>
                 <th>Nominal</th>
                 <th>Tanggal Bayar</th>
@@ -17,17 +33,15 @@
             @foreach($payments as $p)
             <tr>
                 <td>{{ $p->member->name }}</td>
+                <td>{{ $p->officer?->user?->name ?? '-' }}</td>
                 <td>{{ $p->period }}</td>
                 <td>{{ number_format($p->duesCategory->nominal, 0, ',', '.') }}</td>
-                <td>{{ $p->due_date->format('d-m-Y') }}</td>
+                <td>{{ date('d-m-Y', strtotime($p->payment_date)) }}</td>
                 <td>{{ $p->periode_tagihan }}</td>
                 <td>
-                    {{-- <a href="{{ route('payments.edit', $p->id) }}" class="btn btn-warning btn-sm">Edit</a> --}}
-                    <form action="{{ route('payments.destroy', $p->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus?')">Hapus</button>
-                    </form>
+                    <a class="btn btn-danger" href="{{route('payments.destroy',Crypt::encrypt($p->id))}}" onclick="return confirm('Hapus data ini?')">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
                 </td>
             </tr>
             @endforeach

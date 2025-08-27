@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\AdministratorControlller;
 use App\Http\Controllers\DuesCategoryController;
+use App\Http\Controllers\DuesMemberController;
 use App\Http\Controllers\OfficerController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\UserController;
 use App\Models\DuesCategory;
+use App\Models\DuesMember;
 use Illuminate\Support\Facades\Route;
 
 
@@ -50,7 +52,9 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/payment/create',[PaymentController::class, 'create'])->name('payments.create');
     Route::post('/payment/create',[PaymentController::class, 'store'])->name('payments.store');
     Route::get('/payment',[PaymentController::class, 'index'])->name('payments.index');
-    Route::get('/payment/detail/{id}',[PaymentController::class, 'show'])->name('payments.show');
-    Route::get('/payment/delete/{id}',[PaymentController::class, 'destroy'])->name('payments.destroy');
+    Route::get('/payment/detail/{id}',[PaymentController::class, 'detail'])->name('payments.detail');
+    Route::get('/payment/delete/{id}',[PaymentController::class, 'delete'])->name('payments.destroy');
+
+    Route::get('/anggota-iuran', [DuesMemberController::class, 'index'])->name('anggota-iuran');
 
 });

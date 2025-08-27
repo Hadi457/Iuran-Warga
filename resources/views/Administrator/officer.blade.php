@@ -1,9 +1,9 @@
 @extends('Administrator.template')
 @section('content')
-    <div class="container" style="width: 1000px; margin-top: 20px;">
+    <div class="container">
         <h1>Officer</h1>
     </div>
-    <div class="container mt-5">
+    <div class="container mt-3">
         <a class="btn" style="background-color: #386641; color: #FED16A" href="{{route('officer-create')}}">Tambah Officer</a>
         <table class="table table-bordered table-striped mt-3">
             <thead class="table-success">
@@ -17,7 +17,7 @@
             <tbody>
                 <tr>
                     <td scope="row">{{ $item->id }}</td>
-                    <td>{{$item->member->name}}</td>
+                    <td>{{$item->user->name}}</td>
                     <td>
                         <a class="btn btn-warning" href="{{route('officer-edit', Crypt::encrypt($item->id))}}">
                             <i class="fa-solid fa-pen-to-square"></i>
