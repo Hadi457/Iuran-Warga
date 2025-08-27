@@ -13,12 +13,17 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('iduser')->references('id')->on('users');
-            $table->enum('period',['harian', 'bulanan', 'tahunan']);
+            $table->foreignId('member_id')->constrained('members')->onDelete('cascade');
+            $table->unsignedBigInteger('officer_id')->nullable();
             $table->integer('nominal');
-            $table->string('petugas');
+            $table->enum('period', ['mingguan','bulanan','tahunan']);
+            $table->date('due_date');
+            $table->string('periode_tagihan')->nullable();
+            $table->integer('qty')->default(1);
+            $table->foreignId('dues_category_id')->constrained('dues_categories')->onDelete('cascade');
             $table->timestamps();
         });
+
     }
 
     /**

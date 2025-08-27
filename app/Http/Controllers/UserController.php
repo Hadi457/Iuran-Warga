@@ -157,15 +157,20 @@ class UserController extends Controller
         }
     }
     public function delete(String $id){
-        $id = $this->decryptId($id);
+        $id = Crypt::decrypt($id); // decrypt id member
 
         $member = Member::findOrFail($id);
         $member->delete();
+        $user = User::find($member->users_id);
+        if ($user) {
+            $user->delete();
+        }
 
         return redirect()->back()->with('success', 'Successfully deleted warga');
     }
     public function datawarga(){
         $data['warga'] = Member::orderBy('created_at', 'desc')->get();
+        $data['user'] = User::all();
         return view('Administrator.warga', $data);
     }
 

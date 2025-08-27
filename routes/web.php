@@ -46,10 +46,11 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/edit-kategori-iuran/{id}',[DuesCategoryController::class, 'edit'])->name('iuran-edit');
     Route::post('/edit-kategori-iuran/{id}',[DuesCategoryController::class, 'update'])->name('iuran-update');
     Route::get('/delete-kategori-iuran/{id}',[DuesCategoryController::class, 'delete'])->name('iuran-delete');
-    Route::get('/pembayaran', [PaymentController::class, 'index'])->name('pembayaran');
-
-    // routes/web.php
-Route::get('/tagihan/{user}/pilih-kategori', [PaymentController::class, 'pilihKategori'])->name('tagihan.pilih');
-Route::post('/tagihan/{user}/simpan-kategori', [PaymentController::class, 'simpanKategori'])->name('tagihan.simpan');
+    
+    Route::get('/payment/create',[PaymentController::class, 'create'])->name('payments.create');
+    Route::post('/payment/create',[PaymentController::class, 'store'])->name('payments.store');
+    Route::get('/payment',[PaymentController::class, 'index'])->name('payments.index');
+    Route::get('/payment/detail/{id}',[PaymentController::class, 'show'])->name('payments.show');
+    Route::get('/payment/delete/{id}',[PaymentController::class, 'destroy'])->name('payments.destroy');
 
 });

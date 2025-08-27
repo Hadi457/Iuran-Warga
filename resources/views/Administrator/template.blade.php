@@ -50,7 +50,7 @@
         <a href="/officer" class="nav-link">Officer</a>
       </li>
       <li class="nav-item">
-        <a href="/pembayaran" class="nav-link">Payment</a>
+        <a href="/payment" class="nav-link">Payment</a>
       </li>
     </ul>
         <div class="nav-item mt-auto">
