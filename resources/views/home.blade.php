@@ -1,56 +1,93 @@
 @extends('template')
 @section('content')
-<div class="container min-vh-100">
-    <div class="w-100 position-relative mt-5" style="height: 500px;">
-        <div class="text-overlay position-absolute bottom-0 start-0 text-white p-3 m-3" style="z-index: 10;">
-            <div class="fs-2 fw-bold">Wilujeung Sumping di Website <a style="color: #FED16A">KitaRW03</a></div>
-            <p class="fw-bold">UNTUK WARGA DAN MASA DEPAN</p>
-        </div>
-        <div id="carouselExample" class="carousel slide h-100" data-bs-ride="carousel">
-            <div class="carousel-inner h-100">
 
-                <div class="carousel-item active h-100 position-relative">
-                    <img src="{{ asset('assets/image/stonk.jpg') }}" class="d-block w-100 h-100" alt="Slide 1" style="object-fit: cover;">
-                    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.4);"></div>
-                </div>
+<!-- Hero Section -->
+<div class="text-center p-5 mb-5 rounded shadow" 
+     style="background: linear-gradient(90deg, #386641 15%, #FED16A 100%); color:white;">
+    <h1 class="fw-bold">Selamat Datang di Website RW03</h1>
+    <p class="fs-5">Wadah informasi, pelayanan, dan kebersamaan warga RW03</p>
+</div>
 
-                <div class="carousel-item h-100 position-relative">
-                    <img src="{{ asset('assets/image/suka.png') }}" class="d-block w-100 h-100" alt="Slide 2" style="object-fit: cover;">
-                    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.4);"></div>
-                </div>
-
-                <div class="carousel-item h-100 position-relative">
-                    <img src="{{ asset('assets/image/herang.png') }}" class="d-block w-100 h-100" alt="Slide 3" style="object-fit: cover;">
-                    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.4);"></div>
-                </div>
-
+<h2 class="text-center fw-bold mb-4" style="color:#386641;">Pilihan</h2>
+<div class="row text-center mb-5">
+    <div class="col-md-3">
+        <div class="card shadow border-0 rounded-4 h-100" style="background:#386641; color:white;">
+            <div class="card-body">
+                <h5 class="fw-bold">👥 Data Warga</h5>
+                <p>Informasi lengkap warga RW03 dalam satu sistem.</p>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-                <span class="visually-hidden">Sebelumnya</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-                <span class="visually-hidden">Berikutnya</span>
-            </button>
         </div>
     </div>
-    <div class="w-100 position-relative mt-5" style="height: 500px;">
-        <h2 class="mt-5">Tagihan Aktif</h2>
-        <div style="background-color: #386641; width:200px; height: 5px;"></div>
-        <div class="row g-3 mt-3">
-            @foreach ($tagihan as $item)
-            <div class="col-3 mb-3">
-                <div class="card h-100 d-flex flex-column">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $item->period }}</h5>
-                        <img class="card-img-top" style="object-fit: contain; width: 100%; height: 300px" src="{{ asset('storage/image-iuran/'.$item->image)}}" alt="Title" />
-                        <p class="card-text">Nominal: Rp. {{ number_format($item->nominal, 0, ',', '.') }}</p>
-                        <a href="#" class="btn btn-primary">Bayar Tagihan</a>
-                    </div>
+    <div class="col-md-3">
+        <div class="card shadow border-0 rounded-4 h-100" style="background:#FED16A; color:#333;">
+            <div class="card-body">
+                <h5 class="fw-bold">💳 Iuran Rutin</h5>
+                <p>Tagihan Iuran Anda</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow border-0 rounded-4 h-100" style="background:#386641; color:white;">
+            <div class="card-body">
+                <h5 class="fw-bold">📢 Informasi</h5>
+                <p>Pengumuman kegiatan dan berita terbaru RW03.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow border-0 rounded-4 h-100" style="background:#FED16A; color:#333;">
+            <div class="card-body">
+                <h5 class="fw-bold">📝 Layanan Aduan</h5>
+                <p>Laporkan masalah lingkungan dengan cepat.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <!-- Tentang RW03 -->
+    <div class="row mb-5 align-items-center">
+        <div class="col-md-6">
+            <img src= "{{ asset('assets/image/suka.png') }}" class="img-fluid rounded shadow" alt="Komunitas RW03">
+        </div>
+        <div class="col-md-6">
+            <h2 class="fw-bold" style="color:#386641;">Tentang RW03</h2>
+            <p>
+                RW03 adalah lingkungan yang menjunjung tinggi nilai kebersamaan, gotong royong, 
+                dan transparansi. Website ini hadir sebagai sarana untuk memudahkan warga dalam 
+                mengakses informasi, pembayaran iuran, serta layanan lainnya.
+            </p>
+        </div>
+    </div>
+
+    <!-- Berita/Kegiatan -->
+    <h2 class="text-center fw-bold mb-4" style="color:#386641;">Berita & Kegiatan</h2>
+    <div class="row mb-5">
+        <div class="col-md-4">
+            <div class="card shadow border-0 h-100">
+                <img src="https://source.unsplash.com/400x250/?meeting" class="card-img-top" alt="Berita">
+                <div class="card-body">
+                    <h5 class="fw-bold">Kerja Bakti Mingguan</h5>
+                    <p>Kegiatan rutin warga RW03 dalam menjaga kebersihan lingkungan.</p>
                 </div>
             </div>
-            @endforeach
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow border-0 h-100">
+                <img src="https://source.unsplash.com/400x250/?celebration" class="card-img-top" alt="Berita">
+                <div class="card-body">
+                    <h5 class="fw-bold">HUT RI ke-80</h5>
+                    <p>Perlombaan seru dan kebersamaan dalam merayakan Hari Kemerdekaan.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow border-0 h-100">
+                <img src="https://source.unsplash.com/400x250/?security" class="card-img-top" alt="Berita">
+                <div class="card-body">
+                    <h5 class="fw-bold">Poskamling Baru</h5>
+                    <p>Fasilitas pos keamanan lingkungan telah diresmikan untuk menjaga kenyamanan warga.</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

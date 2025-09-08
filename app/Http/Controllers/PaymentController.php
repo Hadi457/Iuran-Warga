@@ -18,8 +18,8 @@ class PaymentController extends Controller
 {
     public function index()
     {
-        $data['warga'] = Member::orderBy('created_at', 'desc')->get();
-        $data['user'] = User::all();
+        $data['warga'] = Member::orderBy('created_at', 'desc')->paginate(10);;
+        $data['user'] = User::paginate(10);
         return view('Administrator.payment', $data);
     }
 
@@ -65,7 +65,7 @@ class PaymentController extends Controller
             if ($lastPayment) {
                 $dueDate = Carbon::parse($lastPayment->due_date)->addMonth();
             } else {
-                $dueDate = Carbon::create(now()->year, 1, 1); // mulai Januari tahun ini
+                $dueDate = Carbon::create(now()->year, 1, 1);
             }
         } elseif (in_array($period, ['yearly', 'tahunan'])) {
             if ($lastPayment) {
@@ -91,7 +91,7 @@ class PaymentController extends Controller
                 $periodeTagihan = 'Minggu ke-' . $storedDueDate->weekOfYear . ' ' . $storedDueDate->year;
                 $dueDate->addWeek();
             } elseif (in_array($period, ['monthly', 'bulanan'])) {
-                $periodeTagihan = $storedDueDate->translatedFormat('F Y'); // Januari 2025, dst
+                $periodeTagihan = $storedDueDate->translatedFormat('F Y');
                 $dueDate->addMonth();
             } elseif (in_array($period, ['yearly', 'tahunan'])) {
                 $periodeTagihan = 'Tahun ' . $storedDueDate->year;
@@ -114,7 +114,7 @@ class PaymentController extends Controller
         }
 
         DuesMember::firstOrCreate([
-            'iduser' => $request->member_id, // atau ambil dari relasi member->user_id
+            'iduser' => $request->member_id,
             'dues_category_id' => $request->dues_category_id,
         ]);
 

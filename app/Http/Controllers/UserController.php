@@ -16,6 +16,10 @@ class UserController extends Controller
     {
         return view('contact');
     }
+    public function about()
+    {
+        return view('about');
+    }
     public function tata()
     {
         return view('tatatertib');
@@ -157,7 +161,7 @@ class UserController extends Controller
         }
     }
     public function delete(String $id){
-        $id = Crypt::decrypt($id); // decrypt id member
+        $id = Crypt::decrypt($id);
 
         $member = Member::findOrFail($id);
         $member->delete();
@@ -169,8 +173,8 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Successfully deleted warga');
     }
     public function datawarga(){
-        $data['warga'] = Member::orderBy('created_at', 'desc')->get();
-        $data['user'] = User::all();
+        $data['warga'] = Member::orderBy('created_at', 'desc')->paginate(10);
+        $data['user'] = User::paginate(10);
         return view('Administrator.warga', $data);
     }
 

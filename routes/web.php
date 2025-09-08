@@ -24,6 +24,7 @@ Route::middleware('warga')->group(function () {
     Route::post('/edit-profil/{id}',[UserController::class, 'update'])->name('profile-update');
     Route::get('/tata', [UserController::class, 'tata'])->name('tata');
     Route::get('/contact', [UserController::class, 'contact'])->name('contact');
+    Route::get('/about', [UserController::class, 'about'])->name('about');
 });
 
 Route::post('/logout',[UserController::class, 'logout'])->name('logout');

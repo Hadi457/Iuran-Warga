@@ -18,7 +18,7 @@ class DuesCategoryController extends Controller
     }
     public function index()
     {
-        $data['dues'] = DuesCategory::all();
+        $data['dues'] = DuesCategory::paginate(10);
         return view('Administrator.kategori-iuran', $data);
     }
     public function create()
