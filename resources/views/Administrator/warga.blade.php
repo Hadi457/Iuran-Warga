@@ -129,13 +129,17 @@
 </head>
 <body>
 <div class="container py-4">
-    <!-- Header -->
     <div class="page-header">
     <div class="d-flex justify-content-between align-items-center">
         <h1 class="page-title mb-0"><i class="fas fa-users me-2"></i>Data Warga</h1>
-        <a class="btn btn-light" href="{{ route('warga-create') }}">
-        <i class="fas fa-plus-circle me-1"></i> Tambah Warga
-        </a>
+        <div class="gap-3 d-flex">
+            <a class="btn btn-light" href="{{route('export')}}" method="POST">
+            <i class="fa-solid fa-download"></i> Download
+            </a>
+            <a class="btn btn-light" href="{{ route('warga-create') }}">
+            <i class="fas fa-plus-circle me-1"></i> Tambah Warga
+            </a>
+        </div>
     </div>
     </div>
 

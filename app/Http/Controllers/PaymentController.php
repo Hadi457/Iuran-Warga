@@ -123,10 +123,10 @@ class PaymentController extends Controller
     public function detail($id)
     {
         $member = Member::findOrFail($id);
-        $payments = Payment::with('duesCategory')->where('member_id', $id)->get()->sortBy(function($payment) {
+        $payments = Payment::with('duesCategory')->where('member_id', $id)->paginate(10)->sortBy(function($payment) {
                 return $payment->due_date->format('Y') . str_pad($payment->due_date->format('m'), 2, '0', STR_PAD_LEFT);
             });
-        $payments = Payment::with('duesCategory')->where('member_id', $id)->get();
+        $payments = Payment::with('duesCategory')->where('member_id', $id)->paginate(10);
         return view('Administrator.detail-payment', compact('member', 'payments'));
     }
     public function delete(String $id){

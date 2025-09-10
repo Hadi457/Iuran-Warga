@@ -15,7 +15,7 @@
     <!-- Table Container -->
     <div class="card shadow border-0">
         <div class="card-body p-0">
-            <div class="table-responsive">
+            <div class="table-responsive-md">
                 <table class="table table-hover table-bordered mb-0">
                     <thead class="table-dark">
                         <tr>
@@ -203,12 +203,12 @@
         }
         
         /* Set data labels for each column */
-        .table tbody td:nth-child(1)::before { content: "No"; }
+        /* .table tbody td:nth-child(1)::before { content: "No"; }
         .table tbody td:nth-child(2)::before { content: "Periode"; }
         .table tbody td:nth-child(3)::before { content: "Nominal"; }
         .table tbody td:nth-child(4)::before { content: "Status"; }
         .table tbody td:nth-child(5)::before { content: "Dibuat Pada"; }
-        .table tbody td:nth-child(6)::before { content: "Aksi"; }
+        .table tbody td:nth-child(6)::before { content: "Aksi"; } */
         
         .table tbody td.text-center {
             text-align: right;

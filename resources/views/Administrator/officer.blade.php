@@ -167,7 +167,7 @@
         <table class="table table-hover table-bordered mb-0">
         <thead class="table-dark">
             <tr>
-            <th scope="col">No</th>
+            <th scope="col" class="text-center">No</th>
             <th scope="col">Nama</th>
             <th scope="col" class="text-center">Aksi</th>
             </tr>
@@ -175,7 +175,7 @@
         <tbody>
             @foreach ($officer as $item)
             <tr>
-            <td scope="row">{{ $loop->iteration }}</td>
+            <td scope="row" class="text-center">{{ $loop->iteration }}</td>
             <td>{{ $item->user->name }}</td>
             <td class="text-center">
                 <a class="btn btn-sm btn-danger" href="{{route('officer-delete',Crypt::encrypt($item->id))}}" onclick="return confirm('Hapus data ini?')" title="Hapus Warga">

@@ -1,5 +1,248 @@
 @extends('Administrator.template')
 @section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Warga - KasWarga</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    :root {
+    --primary-color: #386641;
+    --accent-color: #FED16A;
+    --hover-color: #2c4a32;
+    --text-color: #ecf0f1;
+    }
+    
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: var(--text-color);
+    }
+    
+    .page-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--hover-color) 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-primary-custom {
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    border: none;
+    transition: all 0.3s;
+    }
+    
+    .btn-primary-custom:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px);
+    }
+    
+    .table-container {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    }
+    
+    .table thead {
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    }
+    
+    .table-hover tbody tr:hover {
+    background-color: rgba(56, 102, 65, 0.05);
+    }
+    
+    .action-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    }
+    
+    .badge-admin {
+    background-color: #6f42c1;
+    color: white;
+    }
+    
+    .badge-warga {
+    background-color: #20c997;
+    color: white;
+    }
+    
+    /* Responsive table */
+    @media (max-width: 992px) {
+    .table-responsive-md {
+        overflow-x: auto;
+    }
+    }
+    
+    @media (max-width: 768px) {
+    .table-responsive-sm {
+        overflow-x: auto;
+    }
+    
+    .page-title {
+        font-size: 1.5rem;
+    }
+    
+    .table th, .table td {
+        padding: 0.5rem;
+    }
+    }
+    
+    @media (max-width: 576px) {
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .btn-sm-block {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    }
+    
+    .alert-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+    max-width: 400px;
+    }
+    
+    .pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+<div class="container py-4">
+    <!-- Header -->
+    <div class="page-header">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="page-title mb-0"><i class="fas fa-users me-2"></i>Detail Payment</h1>
+    </div>
+    </div>
+
+    <!-- Alert Messages -->
+    <div class="alert-container">
+    @if ($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong><i class="fas fa-exclamation-circle me-1"></i> Error!</strong>
+        <ul class="mb-0 ps-3">
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+    
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong><i class="fas fa-check-circle me-1"></i> Sukses!</strong> {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+    </div>
+
+    <!-- Table -->
+    <div class="table-container">
+    <div class="table-responsive-md">
+        <table class="table table-hover table-bordered mb-0">
+        <thead class="table-dark">
+            <tr>
+                <th>Nama Warga</th>
+                <th>Petugas</th>
+                <th>Periode</th>
+                <th>Nominal</th>
+                <th>Tanggal Bayar</th>
+                <th>Periode Tagihan</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($payments as $p)
+            <tr>
+                <td>{{ $p->member->name }}</td>
+                <td>{{ $p->officer?->user?->name ?? '-' }}</td>
+                <td>{{ $p->period }}</td>
+                <td>{{ number_format($p->duesCategory->nominal, 0, ',', '.') }}</td>
+                <td>{{ date('d-m-Y', strtotime($p->payment_date)) }}</td>
+                <td>{{ $p->periode_tagihan }}</td>
+                <td>
+                    <a class="btn btn-danger" href="{{route('payments.destroy',Crypt::encrypt($p->id))}}" onclick="return confirm('Hapus data ini?')">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+        </table>
+    </div>
+    </div>
+
+    <!-- Pagination (if applicable) -->
+    @if ($payments->hasPages())
+    <div class="pagination-container mt-4">
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+        @if ($payments->onFirstPage())
+            <li class="page-item disabled"><span class="page-link">Previous</span></li>
+        @else
+            <li class="page-item"><a class="page-link" href="{{ $payments->previousPageUrl() }}">Previous</a></li>
+        @endif
+
+        @foreach ($payments->getUrlRange(1, $payments->lastPage()) as $page => $url)
+            <li class="page-item {{ $payments->currentPage() == $page ? 'active' : '' }}">
+            <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+            </li>
+        @endforeach
+
+        @if ($payments->hasMorePages())
+            <li class="page-item"><a class="page-link" href="{{ $payments->nextPageUrl() }}">Next</a></li>
+        @else
+            <li class="page-item disabled"><span class="page-link">Next</span></li>
+        @endif
+        </ul>
+    </nav>
+    </div>
+    @endif
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Auto close alerts after 5 seconds
+    document.addEventListener('DOMContentLoaded', function() {
+    const alerts = document.querySelectorAll('.alert');
+    alerts.forEach(alert => {
+        setTimeout(() => {
+        const bsAlert = new bootstrap.Alert(alert);
+        bsAlert.close();
+        }, 5000);
+    });
+    });
+</script>
+</body>
+</html>
+@endsection
+
+
+
+{{-- @extends('Administrator.template')
+@section('content')
 <div class="container">
     <h1>Data Tagihan</h1>
     @if ($errors->any())
@@ -48,86 +291,4 @@
         </tbody>
     </table>
 </div>
-@endsection
-
-
-
-
-
-
-{{-- @extends('Administrator.template')
-@section('content')
-<h4>Data Pembayaran: {{ $member->name }}</h4>
-
-@if($weeklyPayments->count())
-    <h5>Mingguan</h5>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nominal</th>
-                <th>Minggu ke</th>
-                <th>Jatuh Tempo</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($weeklyPayments as $index => $payment)
-            <tr>
-                <td>{{ $index + 1 }}</td>
-                <td>Rp {{ number_format($payment->nominal) }}</td>
-                <td>Minggu ke-{{ $index + 1 }}</td>
-                <td>{{ $payment->due_date->format('Y-m-d') }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-@endif
-
-@if($monthlyPayments->count())
-    <h5>Bulanan</h5>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nominal</th>
-                <th>Bulan ke</th>
-                <th>Jatuh Tempo</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($monthlyPayments as $index => $payment)
-            <tr>
-                <td>{{ $index + 1 }}</td>
-                <td>Rp {{ number_format($payment->nominal) }}</td>
-                <td>Bulan ke-{{ $index + 1 }}</td>
-                <td>{{ $payment->due_date->format('Y-m-d') }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-@endif
-
-@if($yearlyPayments->count())
-    <h5>Tahunan</h5>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nominal</th>
-                <th>Tahun ke</th>
-                <th>Jatuh Tempo</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($yearlyPayments as $index => $payment)
-            <tr>
-                <td>{{ $index + 1 }}</td>
-                <td>Rp {{ number_format($payment->nominal) }}</td>
-                <td>Tahun ke-{{ $index + 1 }}</td>
-                <td>{{ $payment->due_date->format('Y-m-d') }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-@endif
 @endsection --}}

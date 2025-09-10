@@ -5,6 +5,35 @@
     <title>@yield('title', 'Iuran Warga')</title>
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link href="{{asset('fontawesome/css/all.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css')}}">
+
+    <style>
+        .logout-section {
+        margin-top: auto;
+        padding: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logout-btn {
+        background-color: transparent;
+        color: var(--text-color);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 5px;
+        padding: 12px;
+        width: 100%;
+        text-align: center;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        }
+        
+        .logout-btn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--accent-color);
+        }
+    </style>
 </head>
 <body class="bg-light min-vh-100 d-flex flex-column">
     <nav class="navbar navbar-expand-lg p-3" style="background-color: #386641;">
@@ -43,10 +72,15 @@
                         <hr>
                         <li>
                             @auth
-                                <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                <div class="logout-section">
+                                    <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="btn btn-danger btn-sm ms-2">Logout</button>
-                                </form>
+                                    <button type="submit" class="logout-btn">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <span>Logout</span>
+                                    </button>
+                                    </form>
+                                </div>
                             @endauth
                         </li>
                     </ul>

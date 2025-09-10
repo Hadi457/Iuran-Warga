@@ -9,52 +9,63 @@
 </div>
 
 <h2 class="text-center fw-bold mb-4" style="color:#386641;">Pilihan</h2>
-<div class="row text-center mb-5">
-    <div class="col-md-3">
+<div class="row text-center mb-3">
+    <div class="col-md-3 mb-3">
+        <a href="/data" class="text-decoration-none">
         <div class="card shadow border-0 rounded-4 h-100" style="background:#386641; color:white;">
             <div class="card-body">
                 <h5 class="fw-bold">👥 Data Warga</h5>
                 <p>Informasi lengkap warga RW03 dalam satu sistem.</p>
             </div>
         </div>
+        </a>
     </div>
-    <div class="col-md-3">
-        <div class="card shadow border-0 rounded-4 h-100" style="background:#FED16A; color:#333;">
-            <div class="card-body">
-                <h5 class="fw-bold">💳 Iuran Rutin</h5>
-                <p>Tagihan Iuran Anda</p>
+    <div class="col-md-3 mb-3">
+        <a href="" class="text-decoration-none">
+            <div class="card shadow border-0 rounded-4 h-100" style="background:#FED16A; color:#333;">
+                <div class="card-body">
+                    <h5 class="fw-bold">💳 Iuran Rutin</h5>
+                    <p>Tagihan Iuran Anda</p>
+                </div>
             </div>
-        </div>
+        </a>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 mb-3">
+        <a href="" class="text-decoration-none">
         <div class="card shadow border-0 rounded-4 h-100" style="background:#386641; color:white;">
             <div class="card-body">
-                <h5 class="fw-bold">📢 Informasi</h5>
+                <h5 class="fw-bold">📢 Fasilitas</h5>
                 <p>Pengumuman kegiatan dan berita terbaru RW03.</p>
             </div>
         </div>
+        </a>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 mb-3">
+        <a href="" class="text-decoration-none">
         <div class="card shadow border-0 rounded-4 h-100" style="background:#FED16A; color:#333;">
             <div class="card-body">
                 <h5 class="fw-bold">📝 Layanan Aduan</h5>
                 <p>Laporkan masalah lingkungan dengan cepat.</p>
             </div>
         </div>
+        </a>
     </div>
 </div>
 <div class="container">
     <!-- Tentang RW03 -->
     <div class="row mb-5 align-items-center">
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3">
             <img src= "{{ asset('assets/image/suka.png') }}" class="img-fluid rounded shadow" alt="Komunitas RW03">
         </div>
-        <div class="col-md-6">
-            <h2 class="fw-bold" style="color:#386641;">Tentang RW03</h2>
-            <p>
-                RW03 adalah lingkungan yang menjunjung tinggi nilai kebersamaan, gotong royong, 
-                dan transparansi. Website ini hadir sebagai sarana untuk memudahkan warga dalam 
-                mengakses informasi, pembayaran iuran, serta layanan lainnya.
+        <div class="col-md-6 mb-3">
+            <h2 class="fw-bold text-center mb-3" style="color:#386641;">RW 03</h2>
+            <p class="text-center">
+                RW03 adalah lingkungan yang menjunjung tinggi nilai kebersamaan, 
+                gotong royong, dan transparansi. Website ini hadir sebagai sarana untuk
+                 memudahkan warga dalam mengakses informasi, pembayaran iuran, serta layanan 
+                 lainnya. Melalui platform ini, diharapkan seluruh warga dapat lebih mudah mendapatkan 
+                 informasi terbaru mengenai kegiatan lingkungan, pengumuman penting, hingga 
+                 layanan administrasi tanpa harus repot datang langsung ke balai RW. Selain sebagai pusat informasi, website ini juga menjadi wadah untuk memperkuat ikatan sosial antarwarga. Dengan adanya sistem digital ini, segala bentuk komunikasi, penyampaian aspirasi, maupun layanan aduan dapat dilakukan dengan lebih cepat, terbuka, dan teratur.
             </p>
         </div>
     </div>

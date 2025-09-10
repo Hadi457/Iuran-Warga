@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdministratorControlller;
 use App\Http\Controllers\DuesCategoryController;
 use App\Http\Controllers\DuesMemberController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OfficerController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\UserController;
@@ -25,6 +26,7 @@ Route::middleware('warga')->group(function () {
     Route::get('/tata', [UserController::class, 'tata'])->name('tata');
     Route::get('/contact', [UserController::class, 'contact'])->name('contact');
     Route::get('/about', [UserController::class, 'about'])->name('about');
+    Route::get('/data', [UserController::class, 'data'])->name('data');
 });
 
 Route::post('/logout',[UserController::class, 'logout'])->name('logout');
@@ -57,5 +59,6 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/payment/delete/{id}',[PaymentController::class, 'delete'])->name('payments.destroy');
 
     Route::get('/anggota-iuran', [DuesMemberController::class, 'index'])->name('anggota-iuran');
-
+    
 });
+Route::get('/export', [UserController::class, 'export'])->name('export');

@@ -202,23 +202,23 @@
         });
         
         // Function to format currency
-        function formatRupiah(amount, prefix = true) {
-            const numberString = amount.toString().replace(/[^\d]/g, '');
-            const number = parseInt(numberString);
+        // function formatRupiah(amount, prefix = true) {
+        //     const numberString = amount.toString().replace(/[^\d]/g, '');
+        //     const number = parseInt(numberString);
             
-            if (isNaN(number)) return '';
+        //     if (isNaN(number)) return '';
             
-            if (prefix) {
-                return 'Rp ' + number.toLocaleString('id-ID');
-            } else {
-                return number.toLocaleString('id-ID');
-            }
-        }
+        //     if (prefix) {
+        //         return 'Rp ' + number.toLocaleString('id-ID');
+        //     } else {
+        //         return number.toLocaleString('id-ID');
+        //     }
+        // }
         
         // Format nominal on page load if there's a value
-        if (nominalInput.value) {
-            nominalInput.value = formatRupiah(nominalInput.value, false);
-        }
+        // if (nominalInput.value) {
+        //     nominalInput.value = formatRupiah(nominalInput.value, false);
+        // }
     });
 </script>
 @endsection

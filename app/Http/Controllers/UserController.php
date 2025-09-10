@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UserExport;
 use App\Models\Member;
 use App\Models\User;
 use Illuminate\Contracts\Encryption\DecryptException;
@@ -9,9 +10,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
+    public function export(){
+        return Excel::download(new UserExport(), 'pengguna.xlsx');
+    }
     public function contact()
     {
         return view('contact');
@@ -23,6 +28,11 @@ class UserController extends Controller
     public function tata()
     {
         return view('tatatertib');
+    }
+    public function data()
+    {
+        $data['members'] = Member::orderBy('created_at', 'desc')->get();
+        return view('data', $data);
     }
 
     public function logout()

@@ -164,7 +164,7 @@
         <table class="table table-hover table-bordered mb-0">
         <thead class="table-dark">
             <tr>
-            <th scope="col">No</th>
+            <th scope="col" class="text-center">No</th>
             <th scope="col">Nama</th>
             <th scope="col">Periode</th>
             <th scope="col">Sisa Periode</th>
@@ -173,7 +173,7 @@
         <tbody>
             @foreach ($anggotaiuran as $item)
             <tr>
-            <td scope="row">{{ $loop->iteration }}</td>
+            <td class="text-center" scope="row">{{ $loop->iteration }}</td>
             <td>{{ $item->member->name }}</td>
             <td>{{ $item->duesCategory->period }}</td>
             <td>{{ $item->sisa_periode }}</td>

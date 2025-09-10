@@ -193,49 +193,6 @@
             </div>
         </div>
     </div>
-
-    <!-- System Status -->
-    <div class="row g-4 mt-4">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header bg-white py-3">
-                    <h5 class="card-title mb-0"><i class="fas fa-server me-2"></i>Status Sistem</h5>
-                </div>
-                <div class="card-body">
-                    <div class="row text-center">
-                        <div class="col-md-3 col-6 mb-3">
-                            <div class="system-status">
-                                <i class="fas fa-database fa-2x text-primary mb-2"></i>
-                                <h6>Database</h6>
-                                <span class="badge bg-success">Online</span>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-6 mb-3">
-                            <div class="system-status">
-                                <i class="fas fa-server fa-2x text-primary mb-2"></i>
-                                <h6>Server</h6>
-                                <span class="badge bg-success">Stable</span>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-6 mb-3">
-                            <div class="system-status">
-                                <i class="fas fa-shield-alt fa-2x text-primary mb-2"></i>
-                                <h6>Security</h6>
-                                <span class="badge bg-success">Protected</span>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-6 mb-3">
-                            <div class="system-status">
-                                <i class="fas fa-sync-alt fa-2x text-primary mb-2"></i>
-                                <h6>Uptime</h6>
-                                <span class="badge bg-info">99.9%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <style>
@@ -317,10 +274,6 @@
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         color: #333;
-    }
-    
-    .system-status {
-        padding: 1rem;
     }
     
     .card {
