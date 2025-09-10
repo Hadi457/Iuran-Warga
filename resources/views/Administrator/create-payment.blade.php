@@ -1,4 +1,4 @@
-@extends('Administrator.template')
+{{-- @extends('Administrator.template')
 
 @section('content')
 <div class="container py-4">
@@ -156,30 +156,15 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const duesCategory = document.getElementById('duesCategory');
         const nominalInput = document.getElementById('nominal');
         const categoryInfo = document.getElementById('categoryInfo');
-        const infoContent = document.getElementById('infoContent');
         
         // Update nominal when category changes
         duesCategory.addEventListener('change', function() {
             const selectedOption = this.options[this.selectedIndex];
             const nominalValue = selectedOption.getAttribute('data-nominal');
-            
             if (nominalValue) {
                 nominalInput.value = nominalValue;
-                
-                // Show category info
-                const categoryName = selectedOption.text.split(' - ')[0];
-                const period = selectedOption.text.split(' / ')[1];
-                
-                infoContent.innerHTML = `
-                    <p class="mb-1"><strong>Kategori:</strong> ${categoryName}</p>
-                    <p class="mb-1"><strong>Nominal Standar:</strong> Rp ${formatRupiah(nominalValue)}</p>
-                    <p class="mb-0"><strong>Periode:</strong> ${period}</p>
-                `;
-                
-                categoryInfo.style.display = 'block';
             } else {
                 categoryInfo.style.display = 'none';
             }
@@ -221,4 +206,49 @@
         // }
     });
 </script>
+@endsection --}}
+
+@extends('Administrator.template')
+
+@section('content')
+<div class="container mt-4">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+    <h3>Tambah Payment</h3>
+    <form action="{{ route('payments.store') }}" method="POST">
+    @csrf
+    <div class="mb-3">
+        <label>Warga</label>
+        <select name="member_id" class="form-control">
+            @foreach($members as $m)
+                <option value="{{ $m->id }}">{{ $m->name }}</option>
+            @endforeach
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Kategori Iuran</label>
+        <select name="dues_category_id" class="form-control">
+            @foreach($categories as $c)
+                <option value="{{ $c->id }}">{{ $c->name }} - Rp {{ number_format($c->nominal) }} / {{ $c->period }}</option>
+            @endforeach
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Nominal Total</label>
+        <input type="number" name="nominal" class="form-control" >
+    </div>
+
+    <button type="submit" class="btn btn-success">Simpan</button>
+</form>
+</div>
 @endsection

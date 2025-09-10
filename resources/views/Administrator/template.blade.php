@@ -293,7 +293,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/berita" class="nav-link">
+            <a href="/activity" class="nav-link">
               <i class="fa-solid fa-newspaper"></i>
               <span>Berita</span>
             </a>

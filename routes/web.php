@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AdministratorControlller;
 use App\Http\Controllers\DuesCategoryController;
 use App\Http\Controllers\DuesMemberController;
@@ -27,11 +28,13 @@ Route::middleware('warga')->group(function () {
     Route::get('/contact', [UserController::class, 'contact'])->name('contact');
     Route::get('/about', [UserController::class, 'about'])->name('about');
     Route::get('/data', [UserController::class, 'data'])->name('data');
+    Route::get('/activity', [ActivityController::class, 'index'])->name('index-activity');
 });
 
 Route::post('/logout',[UserController::class, 'logout'])->name('logout');
 
 Route::middleware(['admin'])->group(function () {
+    Route::get('/activity', [ActivityController::class, 'index'])->name('index-activity');
     Route::get('/dashbord', [AdministratorControlller::class, 'index'])->name('dashboard');
     Route::get('/officer', [OfficerController::class, 'officer'])->name('officer');
     Route::get('/officer/create',[OfficerController::class, 'create'])->name('officer-create');
