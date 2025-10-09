@@ -34,32 +34,24 @@ class PaymentController extends Controller
     {
         $request->validate([
             'member_id'        => 'required|exists:members,id',
-            'dues_category_id' => 'required|exists:dues_categories,id',
             'nominal'          => 'required|numeric|min:1000',
         ]);
 
         $officerId = Auth::user()->officer?->id;
-
-        $category = DuesCategory::findOrFail($request->dues_category_id);
+        $member = Member::findOrFail($request->member_id);
+        $category = DuesCategory::findOrFail($member->dues_category_id);
         $memberId = $request->member_id;
-
-        $existingPayment = Payment::where('member_id', $memberId)->first();
-        if ($existingPayment && $existingPayment->period !== $category->period) {
-            return back()->withErrors([
-                'dues_category_id' => 'Warga ini sudah terdaftar dengan periode ' . $existingPayment->period . ', tidak bisa pilih periode lain.'
-            ]);
-        }
 
         $nominalTotal   = $request->nominal;
         $pricePerPeriod = $category->nominal;
         $qty            = ceil($nominalTotal / $pricePerPeriod);
 
         $period = strtolower($category->period);
-
+        
         $lastPayment = Payment::where('member_id', $memberId)
-            ->where('dues_category_id', $category->id)
             ->orderBy('due_date', 'desc')
             ->first();
+
 
         if (in_array($period, ['monthly', 'bulanan'])) {
             if ($lastPayment) {
@@ -103,8 +95,7 @@ class PaymentController extends Controller
 
             Payment::create([
                 'member_id'        => $memberId,
-                'officer_id'       => Auth::user()->officer->id ?? null,
-                'dues_category_id' => $category->id,
+                'officer_id'       => Auth::user()->officer->id,
                 'period'           => $category->period,
                 'nominal'          => $pricePerPeriod,
                 'due_date'         => $storedDueDate,
@@ -112,23 +103,21 @@ class PaymentController extends Controller
                 'periode_tagihan'  => $periodeTagihan,
             ]);
         }
-
-        DuesMember::firstOrCreate([
-            'iduser' => $request->member_id,
-            'dues_category_id' => $request->dues_category_id,
-        ]);
-
-        return redirect()->route('payments.index')->with('success', 'Payment berhasil ditambahkan.');
+        return redirect()->route('payments.detail', $memberId)->with('success', 'Payment berhasil ditambahkan.');
     }
+
     public function detail($id)
-    {
-        $member = Member::findOrFail($id);
-        $payments = Payment::with('duesCategory')->where('member_id', $id)->paginate(10)->sortBy(function($payment) {
-                return $payment->due_date->format('Y') . str_pad($payment->due_date->format('m'), 2, '0', STR_PAD_LEFT);
-            });
-        $payments = Payment::with('duesCategory')->where('member_id', $id)->paginate(10);
-        return view('Administrator.detail-payment', compact('member', 'payments'));
-    }
+{
+    $member = Member::findOrFail($id);
+    $payment = Payment::findOrFail($id);
+
+    $payments = Payment::where('member_id', $id)
+        ->orderBy('due_date', 'desc')
+        ->paginate(10);
+
+    return view('Administrator.detail-payment', compact('member', 'payments', 'payment'));
+}
+
     public function delete(String $id){
         $id = Crypt::decrypt($id);
         $member = Payment::findOrFail($id);

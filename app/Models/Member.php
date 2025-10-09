@@ -16,4 +16,8 @@ class Member extends Model
     public function officer(){
         return $this->hasMany(Officer::class, 'idmember');
     }
+    public function duesCategory()
+    {
+        return $this->belongsTo(DuesCategory::class, 'dues_category_id');
+    }
 }

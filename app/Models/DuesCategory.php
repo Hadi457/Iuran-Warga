@@ -11,8 +11,8 @@ class DuesCategory extends Model
     {
         return $this->hasMany(DuesMember::class, 'idduescategory');
     }
-    public function payments()
+    public function members()
     {
-        return $this->hasMany(Payment::class, 'dues_category_id');
+        return $this->hasMany(Member::class, 'dues_category_id');
     }
 }

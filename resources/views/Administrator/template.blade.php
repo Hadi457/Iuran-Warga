@@ -251,7 +251,7 @@
     <!-- Sidebar -->
     <div class="sidebar d-flex flex-column" id="sidebar">
       <div class="sidebar-header">
-        <h4 class="logo-text">KasWarga</h4>
+      <a class="navbar-brand fw-bold" href="#"><img src="{{asset('assets/image/P__3_-removebg-preview.png')}}" alt="" width="200" height="100%"></a>
       </div>
       
       <div class="nav-container flex-grow-1">

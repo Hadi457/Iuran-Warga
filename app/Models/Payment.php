@@ -15,10 +15,6 @@ class Payment extends Model
     {
         return $this->belongsTo(Member::class, 'member_id');
     }
-    public function duesCategory()
-    {
-        return $this->belongsTo(DuesCategory::class, 'dues_category_id');
-    }
     public function officer()
     {
         return $this->belongsTo(Officer::class, 'officer_id');

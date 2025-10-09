@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->enum('period',["bulanan", "tahunan", "mingguan"]);
             $table->integer('nominal');
-            $table->string('status');
             $table->timestamps();
         });
     }

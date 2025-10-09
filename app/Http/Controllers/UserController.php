@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Exports\UserExport;
+use App\Models\DuesCategory;
+use App\Models\DuesMember;
 use App\Models\Member;
 use App\Models\User;
 use Illuminate\Contracts\Encryption\DecryptException;
@@ -66,7 +68,8 @@ class UserController extends Controller
         return redirect()->back()->with('pesan','login failed');
     }
     public function create(){
-        return view('Administrator.create-warga');
+        $data['categories'] = DuesCategory::all();
+        return view('Administrator.create-warga', $data);
     }
     public function store(Request $request){
         $request->validate([
@@ -77,6 +80,7 @@ class UserController extends Controller
             'addres' => 'required|string',
             'password' => 'required',
             'image' => 'image|mimes:png,jpg,jpeg|max:3072',
+            'dues_category_id' => 'required|exists:dues_categories,id',
         ]);
         $user = User::create([
             'name' => $request->name,
@@ -91,13 +95,18 @@ class UserController extends Controller
         }else{
             $filename = "-";
         }
-        Member::Create([
+        $member = Member::Create([
             'name' => $request->name,
             'nik' => $request->nik,
             'number_handphone' => $request->number_handphone,
             'addres' => $request->addres,
             'image' => $filename,
             'users_id' => $user->id,
+            'dues_category_id' => $request->dues_category_id,
+        ]);
+        DuesMember::firstOrCreate([
+            'iduser' => $member->id,
+            'dues_category_id' => $request->dues_category_id,
         ]);
         return redirect()->route('data-warga')->with('succcess','Successfully added member');
     }

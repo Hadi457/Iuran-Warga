@@ -21,7 +21,6 @@ return new class extends Migration
             $table->date('payment_date');
             $table->string('periode_tagihan')->nullable();
             $table->integer('qty')->default(1);
-            $table->foreignId('dues_category_id')->constrained('dues_categories')->onDelete('cascade');
             $table->timestamps();
         });
 

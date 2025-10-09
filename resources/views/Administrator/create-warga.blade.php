@@ -109,6 +109,19 @@
                                 </div>
                                 <div class="form-text">Minimal 8 karakter</div>
                             </div>
+                            <!-- Kategori Iuran Selection -->
+                            <div class="mb-4">
+                                <label class="form-label fw-semibold">Kategori Iuran <span class="text-danger">*</span></label>
+                                <select name="dues_category_id" id="duesCategory" class="form-select form-select" required>
+                                    <option value="" selected disabled>Pilih Kategori Iuran</option>
+                                    @foreach($categories as $c)
+                                        <option value="{{ $c->id }}" data-nominal="{{ $c->nominal }}" data-period="{{ $c->period }}" {{ old('dues_category_id') == $c->id ? 'selected' : '' }}>
+                                            {{ $c->name }} - Rp {{ number_format($c->nominal) }} / {{ $c->period }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <div class="form-text">Pilih kategori iuran yang akan dibayar</div>
+                            </div>
                         </div>
 
                         <!-- Action Buttons -->

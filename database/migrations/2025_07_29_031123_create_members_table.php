@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('addres');
             $table->string('number_handphone',13);
             $table->foreignId('users_id')->references('id')->on('users');
+            $table->foreignId('dues_category_id')->constrained('dues_categories')->onDelete('cascade');
             $table->string('image', 255)->nullable();
             $table->timestamps();
         });

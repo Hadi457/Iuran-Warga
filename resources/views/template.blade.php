@@ -36,9 +36,9 @@
     </style>
 </head>
 <body class="bg-light min-vh-100 d-flex flex-column">
-    <nav class="navbar navbar-expand-lg p-3" style="background-color: #386641;">
+    <nav class="navbar navbar-expand-lg p-3 fixed-top" style="background-color: #386641;">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bold" style="color: #FED16A;" href="#">KitaRW03</a>
+            <a class="navbar-brand fw-bold" href="#"><img src="{{asset('assets/image/P__3_-removebg-preview.png')}}" alt="" width="200" height="100%"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -89,7 +89,7 @@
             </div>
         </div>
     </nav>
-    <div class="container mt-4">
+    <div class="container" style="margin-top: 120px;">
         @yield('content')
     </div>
     <script src="{{asset('assets/bootstrap/js/bootstrap.bundle.min.js')}}"></script>

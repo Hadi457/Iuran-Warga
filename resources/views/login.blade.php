@@ -17,7 +17,7 @@
     <div class="container my-auto text-white p-5 rounded">
         <div class="card d-flex justify-content-center align-items-center mx-auto rounded-5 p-5" style="width: 500px; background-color: #386641">
             <div class="d-flex text-center" style="color: #FED16A; width: 300px;">
-                <h2>Wiujeung Sumping Wargi RW03</h2>
+                <h2>Wiujeung Sumping Wargi Pamoyanan</h2>
             </div>
             <div class="mt-5" style="height: 200px; width: 400px; justify-content: center; align-items: center; display: flex; flex-direction: column;">
                 <form action="{{ route('auth.login') }}" method="POST" enctype="multipart/form-data">

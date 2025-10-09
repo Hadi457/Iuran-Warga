@@ -135,6 +135,23 @@
         <h1 class="page-title mb-0"><i class="fas fa-users me-2"></i>Detail Payment</h1>
     </div>
     </div>
+    <div class="card mb-4 shadow-sm border-0">
+        <div class="card-body">
+            <div class="row">
+                {{-- @foreach ($payments as $p )
+                @endforeach --}}
+                <div class="col-md-6 mb-2">
+                    <p class="mb-1 text-muted">Nama Warga:</p>
+                    <h6 class="fw-semibold">{{ $member->name }}</h6>
+                </div>
+                
+                <div class="col-md-6 mb-2">
+                    <p class="mb-1 text-muted">Periode Iuran:</p>
+                    <h6 class="fw-semibold text-capitalize">{{$payment->period}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Alert Messages -->
     <div class="alert-container">
@@ -164,9 +181,7 @@
         <table class="table table-hover table-bordered mb-0">
         <thead class="table-dark">
             <tr>
-                <th>Nama Warga</th>
                 <th>Petugas</th>
-                <th>Periode</th>
                 <th>Nominal</th>
                 <th>Tanggal Bayar</th>
                 <th>Periode Tagihan</th>
@@ -176,10 +191,8 @@
         <tbody>
             @foreach($payments as $p)
             <tr>
-                <td>{{ $p->member->name }}</td>
                 <td>{{ $p->officer?->user?->name ?? '-' }}</td>
-                <td>{{ $p->period }}</td>
-                <td>{{ number_format($p->duesCategory->nominal, 0, ',', '.') }}</td>
+                <td>{{ number_format($p->nominal, 0, ',', '.') }}</td>
                 <td>{{ date('d-m-Y', strtotime($p->payment_date)) }}</td>
                 <td>{{ $p->periode_tagihan }}</td>
                 <td>

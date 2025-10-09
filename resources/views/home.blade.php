@@ -4,7 +4,7 @@
 <!-- Hero Section -->
 <div class="text-center p-5 mb-5 rounded shadow" 
      style="background: linear-gradient(90deg, #386641 15%, #FED16A 100%); color:white;">
-    <h1 class="fw-bold">Selamat Datang di Website RW03</h1>
+    <h1 class="fw-bold">Sampurasun Para Wargi Pamoyanan</h1>
     <p class="fs-5">Wadah informasi, pelayanan, dan kebersamaan warga RW03</p>
 </div>
 
@@ -58,7 +58,7 @@
             <img src= "{{ asset('assets/image/suka.png') }}" class="img-fluid rounded shadow" alt="Komunitas RW03">
         </div>
         <div class="col-md-6 mb-3">
-            <h2 class="fw-bold text-center mb-3" style="color:#386641;">RW 03</h2>
+            <h2 class="fw-bold text-center mb-3" style="color:#386641;">Pamoyanan</h2>
             <p class="text-center">
                 RW03 adalah lingkungan yang menjunjung tinggi nilai kebersamaan, 
                 gotong royong, dan transparansi. Website ini hadir sebagai sarana untuk
