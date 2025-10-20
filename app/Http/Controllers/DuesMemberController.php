@@ -13,7 +13,7 @@ class DuesMemberController extends Controller
     {
         {
             $currentYear = Carbon::now()->year;
-            $anggotaiuran = DuesMember::with(['member', 'duesCategory'])->paginate(10);
+            $anggotaiuran = DuesMember::with(['member', 'duesCategory'])->get();
             $anggotaiuran->transform(function ($dm) use ($currentYear) {
                 $periodRaw = strtolower($dm->duesCategory->period ?? '');
 

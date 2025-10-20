@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\DuesCategory;
+use App\Models\DuesMember;
+use App\Models\Member;
 use App\Models\Officer;
 use App\Models\Payment;
 use App\Models\User;
@@ -13,12 +15,14 @@ class AdministratorControlller extends Controller
     public function index()
     {
         $data['users'] = User::all();
+        $data['categories'] = DuesCategory::all();
+        $data['members'] = Member::all();
         $data['payment'] = Payment::all();
         $data['dues'] = DuesCategory::all();
         $data['officers'] = Officer::all();
         $data['recentPayments'] = Payment::with('member') // ikut load relasi member
         ->orderBy('created_at', 'desc')
-        ->take(5)
+        ->take(4)
         ->get();
 
     return view('administrator.dashboard', $data);

@@ -16,9 +16,12 @@ class DuesCategoryController extends Controller
             abort(404);
         }
     }
-    public function index()
+    public function index($id = null)
     {
-        $data['dues'] = DuesCategory::paginate(10);
+        if($id){
+            $data['dues'] = DuesCategory::findOrFail(Crypt::decrypt($id));
+        }
+        $data['dues'] = DuesCategory::all();
         return view('Administrator.kategori-iuran', $data);
     }
     public function create()
@@ -44,7 +47,7 @@ class DuesCategoryController extends Controller
         $dues = DuesCategory::findOrFail($this->decryptId($id));
         $dues->delete();
 
-        return redirect()->route('kategori-iuran')->with('pesan', 'Iuran berhasil dihapus.');
+        return redirect()->route('kategori-iuran')->with('pesan', 'Kategori iuran berhasil dihapus.');
     }
     public function edit($id)
     {
@@ -61,6 +64,6 @@ class DuesCategoryController extends Controller
         ]);
         $dues->update($validate);
 
-        return redirect()->route('kategori-iuran')->with('pesan', 'Iuran berhasil diperbarui.');
+        return redirect()->route('kategori-iuran')->with('pesan', 'Kategori berhasil diperbarui.');
     }
 }

@@ -19,6 +19,7 @@ class OfficerController extends Controller
     }
     public function officer()
     {
+        $data['members'] = Member::all();
         $data['officer'] = Officer::with('member')->get();
         return view('administrator.officer', $data);
     }
@@ -39,7 +40,7 @@ class OfficerController extends Controller
             'iduser' => $request->iduser,
         ]);
 
-        return redirect()->route('officer')->with('success', 'Officer created successfully.');
+        return redirect()->route('officer')->with('pesan', 'Warga telah berhasil ditetapkan sebagai petugas.');
     }
     public function edit($id)
     {
@@ -63,7 +64,7 @@ class OfficerController extends Controller
             'idmember' => $request->idmember,
         ]);
 
-        return redirect()->route('officer')->with('success', 'Officer updated successfully.');
+        return redirect()->route('officer')->with('pesan', 'Data petugas telah berhasil diperbarui.');
     }
     public function delete($id)
     {
@@ -71,6 +72,6 @@ class OfficerController extends Controller
 
         $officer = Officer::findOrFail($id);
         $officer->delete();
-        return redirect()->route('officer')->with('success', 'Officer deleted successfully.');
+        return redirect()->route('officer')->with('pesan', 'Status petugas telah dicabut dari warga tersebut.');
     }
 }

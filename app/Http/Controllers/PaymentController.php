@@ -18,6 +18,8 @@ class PaymentController extends Controller
 {
     public function index()
     {
+        $data['members'] = Member::all();
+        $data['categories'] = DuesCategory::all();
         $data['warga'] = Member::orderBy('created_at', 'desc')->paginate(10);;
         $data['user'] = User::paginate(10);
         return view('Administrator.payment', $data);
@@ -36,8 +38,6 @@ class PaymentController extends Controller
             'member_id'        => 'required|exists:members,id',
             'nominal'          => 'required|numeric|min:1000',
         ]);
-
-        $officerId = Auth::user()->officer?->id;
         $member = Member::findOrFail($request->member_id);
         $category = DuesCategory::findOrFail($member->dues_category_id);
         $memberId = $request->member_id;
@@ -45,6 +45,12 @@ class PaymentController extends Controller
         $nominalTotal   = $request->nominal;
         $pricePerPeriod = $category->nominal;
         $qty            = ceil($nominalTotal / $pricePerPeriod);
+
+        if ($nominalTotal % $pricePerPeriod !== 0) {
+            return back()
+                ->withErrors(['nominal' => 'Nominal harus kelipatan dari ' . number_format($pricePerPeriod, 0, ',', '.')])
+                ->withInput();
+        }
 
         $period = strtolower($category->period);
         
@@ -103,7 +109,7 @@ class PaymentController extends Controller
                 'periode_tagihan'  => $periodeTagihan,
             ]);
         }
-        return redirect()->route('payments.detail', $memberId)->with('success', 'Payment berhasil ditambahkan.');
+        return redirect()->route('payments.detail', $memberId)->with('pesan', 'Terima kasih! Pembayaran iuran Anda sudah kami terima');
     }
 
     public function detail($id)
@@ -122,6 +128,6 @@ class PaymentController extends Controller
         $id = Crypt::decrypt($id);
         $member = Payment::findOrFail($id);
         $member->delete();
-        return redirect()->back()->with('success', 'Pembayaran berhasil dihapus');
+        return redirect()->back()->with('pesan', 'Data pembayaran sudah dihapus dari daftar.');
     }
 }

@@ -62,18 +62,6 @@
                     </div>
                 </div>
 
-                {{-- <!-- Informasi Kategori -->
-                <div class="alert alert-info" id="categoryInfo">
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-info-circle me-2"></i>
-                        <h6 class="mb-0">Informasi Kategori</h6>
-                    </div>
-                    <hr class="my-2">
-                    <div id="infoContent">
-                        Silakan pilih kategori iuran untuk melihat informasi detail
-                    </div>
-                </div> --}}
-
                 <!-- Payment Validation Info -->
                 <div class="alert alert-warning" id="paymentValidation" style="display: none;">
                     <div class="d-flex align-items-center">

@@ -37,7 +37,6 @@
 
                     <form action="{{ route('warga-store') }}" method="POST" id="wargaForm">
                         @csrf
-                        
                         <div class="row">
                             <!-- Nama -->
                             <div class="col-md-6 mb-3">

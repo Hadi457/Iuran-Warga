@@ -1,1 +1,4 @@
-ini admin
+@extends('Administrator.template')
+@section('content')
+    a
+@endsection

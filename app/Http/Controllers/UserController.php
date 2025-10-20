@@ -108,7 +108,7 @@ class UserController extends Controller
             'iduser' => $member->id,
             'dues_category_id' => $request->dues_category_id,
         ]);
-        return redirect()->route('data-warga')->with('succcess','Successfully added member');
+        return redirect()->route('data-warga')->with('pesan','Warga baru berhasil ditambahkan');
     }
     private function decryptId($id){
         try {
@@ -149,7 +149,7 @@ class UserController extends Controller
             }
             $user->save();
             $member->update($validate);
-            return redirect()->route('data-warga')->with('pesan','successfully updated warga');
+            return redirect()->route('data-warga')->with('pesan','Data warga telah berhasil diperbarui.');
         }else{
             $id = $this->decryptId($id);
             $validate = $request->validate([
@@ -189,10 +189,15 @@ class UserController extends Controller
             $user->delete();
         }
 
-        return redirect()->back()->with('success', 'Successfully deleted warga');
+        return redirect()->back()->with('pesaneror', 'Warga berhasil dihapus dari daftar');
     }
-    public function datawarga(){
-        $data['warga'] = Member::orderBy('created_at', 'desc')->paginate(10);
+    public function datawarga($id = null){
+        if ($id) {
+            $id = $this->decryptId($id);
+            $data['warga'] = Member::with('user')->findOrFail($id);
+        }
+        $data['categories'] = DuesCategory::all();
+        $data['warga'] = Member::orderBy('created_at', 'desc')->get();
         $data['user'] = User::paginate(10);
         return view('Administrator.warga', $data);
     }

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link href="{{asset('fontawesome/css/all.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css')}}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <style>
         .logout-section {
@@ -64,7 +65,7 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                         <li class="nav-item">
-                            <span class="nav-link">Hi, {{ Auth::user()->name }}</span>
+                            {{-- <span class="nav-link">Hi, {{ Auth::user()->name }}</span> --}}
                         </li>
                         <li><h4 class="dropdown-header">Menu</h4></li>
                         <li><a class="dropdown-item" href="/profil">Profil</a></li>
@@ -89,7 +90,7 @@
             </div>
         </div>
     </nav>
-    <div class="container" style="margin-top: 120px;">
+    <div class="pt-4 mt-5">
         @yield('content')
     </div>
     <script src="{{asset('assets/bootstrap/js/bootstrap.bundle.min.js')}}"></script>

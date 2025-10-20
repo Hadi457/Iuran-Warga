@@ -82,37 +82,6 @@
                             </div>
                         </div>
 
-                        <!-- Status Selection -->
-                        <div class="mb-4">
-                            <label class="form-label fw-semibold">Status</label>
-                            <div class="input-group">
-                                <span class="input-group-text bg-light">
-                                    <i class="fas fa-toggle-on text-muted"></i>
-                                </span>
-                                <select name="status" class="form-select form-select">
-                                    <option value="" {{ old('status') == '' ? 'selected' : '' }}>-- Pilih Status --</option>
-                                    <option value="Aktif" {{ old('status') == 'Aktif' ? 'selected' : '' }}>Aktif</option>
-                                    <option value="Tidak Aktif" {{ old('status') == 'Tidak Aktif' ? 'selected' : '' }}>Tidak Aktif</option>
-                                </select>
-                            </div>
-                            <div class="form-text">
-                                Status aktif akan membuat iuran dapat digunakan
-                            </div>
-                        </div>
-
-                        <!-- Informasi Iuran -->
-                        <div class="alert alert-info">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-info-circle me-2"></i>
-                                <h6 class="mb-0">Informasi Iuran</h6>
-                            </div>
-                            <hr class="my-2">
-                            <p class="mb-0 small">
-                                Iuran yang dibuat akan tersedia untuk dipilih saat melakukan pembayaran. 
-                                Pastikan nominal dan periode sudah sesuai.
-                            </p>
-                        </div>
-
                         <!-- Action Buttons -->
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
                             <button type="reset" class="btn btn-outline-secondary me-md-2">
