@@ -36,12 +36,11 @@
 }
 </style>
 <body>
-    
-    <div class="img-fluid text-center py-5 d-flex align-items-center" style="background: url('{{ asset('assets/image/kokol1.png') }}'); background-repeat: no-repeat; background-size: cover; background-position: center; background-size: cover; position: relative; height: 800px;">
-      <div style="background: rgba(0, 0, 50, 0.6); position: absolute; top:0; left:0; width:100%; height:100%;"></div>
+
+    <div class="img-fluid text-center py-5 d-flex align-items-center" style="background: url('{{ asset('assets/image/masjid.png') }}'); background-repeat: no-repeat; background-size: cover; background-position: center; background-size: cover; position: relative; height: 700px;">
+      <div style="background: rgba(0, 0, 0, 0.6); position: absolute; top:0; left:0; width:100%; height:100%;"></div>
       <div class="container position-relative" style="z-index: 2;">
-        <img src="{{ asset('assets/image/cocol.png') }}" alt="Logo" width="150" class="mb-4 animate__animated animate__fadeInDown">
-        <h1 class="fw-bold text-warning animate__animated animate__fadeInUp">SMA NEGERI 1 SINGAPARNA</h1>
+        <h1 class="fw-bold animate__animated animate__fadeInUp" style="color: #FED16A">SAMPURASUN PARA WARGI PAMOYANAN</h1>
         <p class="lead text-white fst-italic animate__animated animate__fadeInUp animate__delay-2s">
           "Berprestasi, Berkarakter, dan Berbudaya"
         </p>
@@ -50,7 +49,7 @@
         </a>
       </div>
     </div>
-    <div class="container">
+    <div class="container mt-5">
 
         <!-- Pilihan Menu -->
         <h2 class="text-center fw-bold mb-4" style="color:#386641;">Pilihan</h2>
@@ -108,7 +107,7 @@
                 </a>
             </div>
         </div>
-        
+
         <!-- Tentang RW03 -->
         <div class="container mb-5">
             <div class="row align-items-center">
@@ -118,11 +117,11 @@
                 <div class="col-md-6 mb-3">
                     <h2 class="fw-bold text-center mb-3" style="color:#386641;">Pamoyanan</h2>
                     <p class="text-center">
-                        RW03 adalah lingkungan yang menjunjung tinggi nilai kebersamaan, 
+                        RW03 adalah lingkungan yang menjunjung tinggi nilai kebersamaan,
                         gotong royong, dan transparansi. Website ini hadir sebagai sarana untuk
-                        memudahkan warga dalam mengakses informasi, pembayaran iuran, serta layanan 
-                        lainnya. Melalui platform ini, diharapkan seluruh warga dapat lebih mudah mendapatkan 
-                        informasi terbaru mengenai kegiatan lingkungan, pengumuman penting, hingga 
+                        memudahkan warga dalam mengakses informasi, pembayaran iuran, serta layanan
+                        lainnya. Melalui platform ini, diharapkan seluruh warga dapat lebih mudah mendapatkan
+                        informasi terbaru mengenai kegiatan lingkungan, pengumuman penting, hingga
                         layanan administrasi tanpa harus repot datang langsung ke balai RW.
                     </p>
                     <p class="text-center">
@@ -133,7 +132,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Berita / Kegiatan -->
         <div class="container">
             <h2 class="text-center fw-bold mb-4" style="color:#386641;">Berita & Kegiatan</h2>
@@ -167,6 +166,6 @@
                 </div>
             </div>
         </div>
-    </div>   
+    </div>
 </body>
 @endsection
