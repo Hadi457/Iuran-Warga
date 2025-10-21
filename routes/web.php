@@ -8,6 +8,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OfficerController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\UserController;
+use App\Models\Activity;
 use App\Models\DuesCategory;
 use App\Models\DuesMember;
 use Illuminate\Support\Facades\Route;
@@ -34,8 +35,13 @@ Route::middleware('warga')->group(function () {
 Route::post('/logout',[UserController::class, 'logout'])->name('logout');
 
 Route::middleware(['admin'])->group(function () {
-    Route::get('/activity', [ActivityController::class, 'index'])->name('index-activity');
     Route::get('/dashboard', [AdministratorControlller::class, 'index'])->name('dashboard');
+
+    Route::get('/activity', [ActivityController::class, 'index'])->name('index-activity');
+    Route::post('/activity/create',[ActivityController::class, 'store'])->name('activity-store');
+    Route::put('/activity/{id}/update', [ActivityController::class, 'update'])->name('activity-update');
+    Route::delete('/activity/{id}/delete', [ActivityController::class, 'destroy'])->name('activity-destroy');
+
 
     Route::get('/officer', [OfficerController::class, 'officer'])->name('officer');
     Route::post('/officer/create',[OfficerController::class, 'store'])->name('officer-store');
@@ -56,13 +62,13 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/edit-kategori-iuran/{id}',[DuesCategoryController::class, 'edit'])->name('iuran-edit');
     Route::post('/edit-kategori-iuran/{id}',[DuesCategoryController::class, 'update'])->name('iuran-update');
     Route::get('/delete-kategori-iuran/{id}',[DuesCategoryController::class, 'delete'])->name('iuran-delete');
-    
+
     Route::post('/payment/create',[PaymentController::class, 'store'])->name('payments.store');
     Route::get('/payment',[PaymentController::class, 'index'])->name('payments.index');
     Route::get('/payment/detail/{id}',[PaymentController::class, 'detail'])->name('payments.detail');
     Route::get('/payment/delete/{id}',[PaymentController::class, 'delete'])->name('payments.destroy');
 
     Route::get('/anggota-iuran', [DuesMemberController::class, 'index'])->name('anggota-iuran');
-    
+
 });
 Route::get('/export', [UserController::class, 'export'])->name('export');
